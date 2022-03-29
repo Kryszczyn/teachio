@@ -1,7 +1,11 @@
 <?php
-    
-    include_once './private/functions.php'; 
+    session_start();
+    if(!isset($_SESSION['user_id']) && empty($_SESSION['user_id']))
+    {
+        header("Location: login.php");
+    }
 
+    include_once './private/functions.php'; 
     include './private/class/DatabaseConnect.php';     
     include './private/class/Attendace.php';
     include './private/class/Classroom.php';
@@ -17,7 +21,6 @@
 
 
     $db = new DatabaseConnect(); 
-
     $attendace = new Attendance();
     $classroom = new Classroom();
     $classroom_student = new ClassroomStudent();
@@ -29,11 +32,6 @@
     $student = new Student();
     $subject = new Subject();
     $teacher = new Teacher();
-
-    $query = $student->load_all_student(); 
-
-    r2($query);
     
-    //header('Location: login.php'); 
-    header('Location: ./public/index.html'); 
+    //header('Location: ./public/index.html'); 
 ?>

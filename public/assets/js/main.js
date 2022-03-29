@@ -1,9 +1,3 @@
-/*
-const __init__ = () =>{
-    const container = $('.container');
-    //....
-}
-*/
 const loadMenu = () => {
     //TEST
     $.ajax({
@@ -20,12 +14,6 @@ const loadMenu = () => {
         complete:function() {}
     })
 }
-$(document).ready(function(){
-    /* FUNCTIONS ON LOAD */
-    //__init__();
+$(function(){
     loadMenu();
-
-    /* AJAX REQUESTS */
-
-
 })
