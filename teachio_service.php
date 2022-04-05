@@ -1,52 +1,64 @@
 <?php
+    ini_set('error_reporting', 0);
     session_start();
     $type = $_POST['type'];
     
     if($type == "WELCOME")
     {
-
-        include_once './private/functions.php'; 
-        include './private/class/DatabaseConnect.php';     
-
-        $user_id = $_SESSION['user_id'];
-        $user_type = $_SESSION['type'];
-    
-        $db = new DatabaseConnect(); 
-        if($_SESSION['type'] == 'admin')
+        if(!isset($_SESSION['user_id']) && empty($_SESSION['user_id']))
         {
-            include './private/class/Admin.php';
-            $entry = new Admin();
-            $user = $entry->load_admin('*', $_SESSION['user_id']);
+            echo '<script>window.location.href = "./../login.php";</script>';
         }
-        if($_SESSION['type'] == 'teacher')
+        else
         {
-            include './private/class/Teacher.php';
-            $entry = new Teacher();
-            $user = $entry->load_teacher('*', $_SESSION['user_id']);
+            if($_SESSION['type'] == 'admin')
+            {
+                include_once './private/functions.php'; 
+                include './private/class/DatabaseConnect.php';     
+                $db = new DatabaseConnect(); 
+                include './private/class/Admin.php';
+                $entry = new Admin();
+                $user = $entry->load_admin('*', $_SESSION['user_id']);
+            }
+            if($_SESSION['type'] == 'teacher')
+            {
+                include_once './private/functions.php'; 
+                include './private/class/DatabaseConnect.php';     
+                $db = new DatabaseConnect(); 
+                include './private/class/Teacher.php';
+                $entry = new Teacher();
+                $user = $entry->load_teacher('*', $_SESSION['user_id']);
+            }
+            if($_SESSION['type'] == 'student')
+            {
+                include_once './private/functions.php'; 
+                include './private/class/DatabaseConnect.php';     
+                $db = new DatabaseConnect(); 
+                include './private/class/Student.php';
+                $entry = new Student();
+                $user = $entry->load_student('*', $_SESSION['user_id']);
+            }
+            if($_SESSION['type'] == 'parent')
+            {
+                include_once './private/functions.php'; 
+                include './private/class/DatabaseConnect.php';     
+                $db = new DatabaseConnect(); 
+                include './private/class/Parent.php';
+                $entry = new Parent2(); 
+                $user = $entry->load_parent('*', $_SESSION['user_id']);
+            }
+            $user_type = $_SESSION['type'];
         }
-        if($_SESSION['type'] == 'student')
-        {
-            include './private/class/Student.php';
-            $entry = new Student();
-            $user = $entry->load_student('*', $_SESSION['user_id']);
-        }
-        if($_SESSION['type'] == 'parent')
-        {
-            include './private/class/Parent.php';
-            $entry = new Parent2(); 
-            $user = $entry->load_parent('*', $_SESSION['user_id']);
-        }
-
-        echo 'Witaj, nazywasz się '. $user[0]['fname'] . ' ' . $user[0]['lname'] . ' i jesteś ' . $user_type;
         
+        echo 'Witaj, nazywasz się '. $user[0]['fname'] . ' ' . $user[0]['lname'] . ' i jesteś ' . $user_type;
 
-
+        echo '<br><button class="logout">Wyloguj</button>';
+        
     }
     if($type == "LOGIN")
     {
         include './private/functions.php';
         
-
         $email = $_POST['email'];
         $password = $_POST['password'];
         $type_user = $_POST['type_user'];
@@ -83,14 +95,22 @@
             {
                 $user_id = $all_data[$k]['id'];
                 $_SESSION['user_id'] = $user_id;
-                $response = 1;
+                $response = true;
                 break;
             }
             else
             {
-                $response = 0;
+                $response = false;
             }
         }
         echo json_encode($response);
-    }    
+    }
+    if($type == 'LOGOUT')
+    {
+        unset($_SESSION['user_id']);
+        unset($_SESSION['type']);
+        session_destroy();
+        echo '<script>window.location.href = "./login.php";</script>';
+
+    }
 ?>

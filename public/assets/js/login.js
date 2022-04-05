@@ -33,18 +33,16 @@ jQuery(function(){
             data: 'type=LOGIN&email='+loginData+'&password='+pwdData+'&type_user='+type,
             success:function(data)
             {
-                if(data != 1)
-                {
-                    $.notify('Podano przez Ciebie konto nie istnieje', 'error');
-                }
-                else
+                if(JSON.parse(data))
                 {
                     window.location.reload(true)
                 }
+                else
+                {
+                    $.notify('Podano przez Ciebie konto nie istnieje', 'error');
+                }
             },
-            error:function(data){
-                console.log(data)
-            },
+            error:function(data){},
             complete:function() {}
         })
     });

@@ -1,5 +1,4 @@
 const loadMenu = () => {
-    //TEST
     $.ajax({
         method: "POST",
         url: "./../teachio_service.php",
@@ -11,9 +10,26 @@ const loadMenu = () => {
         error:function( data ) {
             console.log(data)
         },
-        complete:function() {}
+        complete:function(){}
     })
 }
+
+loadMenu();
+
 $(function(){
-    loadMenu();
+    $('.logout').on('click', function(){
+        $.ajax({
+            method: "POST",
+            url: "./../teachio_service.php",
+            data: 'type=LOGOUT',
+            success:function() {
+                
+            },
+            error:function() {},
+            complete:function() {
+                location.reload();
+            }
+        })
+        
+    });
 })
