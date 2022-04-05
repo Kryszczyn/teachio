@@ -21,6 +21,16 @@
             return $result;
         }
 
+        public function load_custom_grade($query = "1=1"){
+            $database = new DatabaseConnect();
+            $db = $database->open_connection();
+            $stmt = $db->prepare("SELECT * FROM grade WHERE $query");
+            $stmt->execute();
+    
+            $result=$stmt->fetchAll();
+            return $result;
+        }
+
         public function update_name($id_grade, $name)
         {
             require_once './DatabaseConnect.php';

@@ -31,6 +31,16 @@
             $result=$stmt->fetchAll();
             return $result;
         }
+        
+        public function load_custom_classroom_student($query = "1=1"){
+            $database = new DatabaseConnect();
+            $db = $database->open_connection();
+            $stmt = $db->prepare("SELECT * FROM classroom_student WHERE $query");
+            $stmt->execute();
+    
+            $result=$stmt->fetchAll();
+            return $result;
+        }
 
         public function insert_classroom_student($classroom_id, $student_id)
         {

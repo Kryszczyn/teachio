@@ -13,8 +13,18 @@
         public function load_teacher($col, $id){
             $database = new DatabaseConnect();
             $db = $database->open_connection();
-            $stmt = $db->prepare("SELECT $col FROM teacher WHERE id_teacher=?");
+            $stmt = $db->prepare("SELECT $col FROM teacher WHERE id=?");
             $stmt->bindValue(1, $id, PDO::PARAM_INT);
+            $stmt->execute();
+    
+            $result=$stmt->fetchAll();
+            return $result;
+        }
+
+        public function load_custom_teacher($query = "1=1"){
+            $database = new DatabaseConnect();
+            $db = $database->open_connection();
+            $stmt = $db->prepare("SELECT * FROM teacher WHERE $query");
             $stmt->execute();
     
             $result=$stmt->fetchAll();
@@ -28,7 +38,7 @@
             {
                 $database = new DatabaseConnect();
                 $db = $database->open_connection();
-                $sql = "UPDATE teacher SET email='$email' WHERE id_teacher='$id_teacher' LIMIT 1";
+                $sql = "UPDATE teacher SET email='$email' WHERE id='$id' LIMIT 1";
                 $db->exec($sql);
                 $database->close_connection();
             }
@@ -37,14 +47,14 @@
                 echo $e->getMessage();
             }
         }
-        public function update_password($id_teacher, $password)
+        public function update_password($id, $password)
         {
             require_once './DatabaseConnect.php';
             try
             {
                 $database = new DatabaseConnect();
                 $db = $database->open_connection();
-                $sql = "UPDATE teacher SET password='$password' WHERE id_teacher='$id_teacher' LIMIT 1";
+                $sql = "UPDATE teacher SET password='$password' WHERE id='$id' LIMIT 1";
                 $db->exec($sql);
                 $database->close_connection();
             }
@@ -53,14 +63,14 @@
                 echo $e->getMessage();
             }
         }
-        public function update_fname($id_teacher, $fname)
+        public function update_fname($id, $fname)
         {
             require_once './DatabaseConnect.php';
             try
             {
                 $database = new DatabaseConnect();
                 $db = $database->open_connection();
-                $sql = "UPDATE teacher SET fname='$fname' WHERE id_teacher='$id_teacher' LIMIT 1";
+                $sql = "UPDATE teacher SET fname='$fname' WHERE id='$id' LIMIT 1";
                 $db->exec($sql);
                 $database->close_connection();
             }
@@ -69,14 +79,14 @@
                 echo $e->getMessage();
             }
         }
-        public function update_lname($id_teacher, $lname)
+        public function update_lname($id, $lname)
         {
             require_once './DatabaseConnect.php';
             try
             {
                 $database = new DatabaseConnect();
                 $db = $database->open_connection();
-                $sql = "UPDATE teacher SET lname='$lname' WHERE id_teacher='$id_teacher' LIMIT 1";
+                $sql = "UPDATE teacher SET lname='$lname' WHERE id='$id' LIMIT 1";
                 $db->exec($sql);
                 $database->close_connection();
             }
@@ -85,14 +95,14 @@
                 echo $e->getMessage();
             }
         }
-        public function update_date_birth($id_teacher, $date_birth)
+        public function update_date_birth($id, $date_birth)
         {
             require_once './DatabaseConnect.php';
             try
             {
                 $database = new DatabaseConnect();
                 $db = $database->open_connection();
-                $sql = "UPDATE teacher SET date_birth='$date_birth' WHERE id_teacher='$id_teacher' LIMIT 1";
+                $sql = "UPDATE teacher SET date_birth='$date_birth' WHERE id='$id' LIMIT 1";
                 $db->exec($sql);
                 $database->close_connection();
             }
@@ -101,14 +111,14 @@
                 echo $e->getMessage();
             }
         }
-        public function update_phone($id_teacher, $phone)
+        public function update_phone($id, $phone)
         {
             require_once './DatabaseConnect.php';
             try
             {
                 $database = new DatabaseConnect();
                 $db = $database->open_connection();
-                $sql = "UPDATE teacher SET phone='$phone' WHERE id_teacher='$id_teacher' LIMIT 1";
+                $sql = "UPDATE teacher SET phone='$phone' WHERE id='$id' LIMIT 1";
                 $db->exec($sql);
                 $database->close_connection();
             }
@@ -118,14 +128,14 @@
             }
         }
        
-        public function update_status($id_teacher, $status)
+        public function update_status($id, $status)
         {
             require_once './DatabaseConnect.php';
             try
             {
                 $database = new DatabaseConnect();
                 $db = $database->open_connection();
-                $sql = "UPDATE teacher SET status='$status' WHERE id_teacher='$id_teacher' LIMIT 1";
+                $sql = "UPDATE teacher SET status='$status' WHERE id='$id' LIMIT 1";
                 $db->exec($sql);
                 $database->close_connection();
             }
@@ -134,14 +144,14 @@
                 echo $e->getMessage();
             }
         }
-        public function update_last_login_date($id_teacher, $last_login_date)
+        public function update_last_login_date($id, $last_login_date)
         {
             require_once './DatabaseConnect.php';
             try
             {
                 $database = new DatabaseConnect();
                 $db = $database->open_connection();
-                $sql = "UPDATE teacher SET last_login_date='$last_login_date' WHERE id_teacher='$id_teacher' LIMIT 1";
+                $sql = "UPDATE teacher SET last_login_date='$last_login_date' WHERE id='$id' LIMIT 1";
                 $db->exec($sql);
                 $database->close_connection();
             }

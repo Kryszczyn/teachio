@@ -22,6 +22,16 @@
             return $result;
         }
 
+        public function load_custom_exam($query = "1=1"){
+            $database = new DatabaseConnect();
+            $db = $database->open_connection();
+            $stmt = $db->prepare("SELECT * FROM exam WHERE $query");
+            $stmt->execute();
+    
+            $result=$stmt->fetchAll();
+            return $result;
+        }
+
         public function update_exam_type_id($id_exam, $exam_type_id)
         {
             require_once './DatabaseConnect.php';

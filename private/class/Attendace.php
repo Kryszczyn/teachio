@@ -41,6 +41,16 @@
             $result=$stmt->fetchAll();
             return $result;
         }
+        
+        public function load_custom_attendace($query = "1=1"){
+            $database = new DatabaseConnect();
+            $db = $database->open_connection();
+            $stmt = $db->prepare("SELECT * FROM attendace WHERE $query");
+            $stmt->execute();
+    
+            $result=$stmt->fetchAll();
+            return $result;
+        }
 
        
         public function update_status($date, $student_id, $status)

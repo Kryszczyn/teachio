@@ -20,6 +20,16 @@
             $result=$stmt->fetchAll();
             return $result;
         }
+        
+        public function load_custom_subject($query = "1=1"){
+            $database = new DatabaseConnect();
+            $db = $database->open_connection();
+            $stmt = $db->prepare("SELECT * FROM subcject WHERE $query");
+            $stmt->execute();
+    
+            $result=$stmt->fetchAll();
+            return $result;
+        }
 
         public function update_name($id_subject, $name)
         {

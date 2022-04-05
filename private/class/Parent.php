@@ -13,22 +13,31 @@
         public function load_parent($col, $id){
             $database = new DatabaseConnect();
             $db = $database->open_connection();
-            $stmt = $db->prepare("SELECT $col FROM parent WHERE id_parent=?");
+            $stmt = $db->prepare("SELECT $col FROM parent WHERE id=?");
             $stmt->bindValue(1, $id, PDO::PARAM_INT);
             $stmt->execute();
     
             $result=$stmt->fetchAll();
             return $result;
         }
+        public function load_custom_parent($query = "1=1"){
+            $database = new DatabaseConnect();
+            $db = $database->open_connection();
+            $stmt = $db->prepare("SELECT * FROM parent WHERE $query");
+            $stmt->execute();
+    
+            $result=$stmt->fetchAll();
+            return $result;
+        }
 
-        public function update_email($id_parent, $email)
+        public function update_email($id, $email)
         {
             require_once './DatabaseConnect.php';
             try
             {
                 $database = new DatabaseConnect();
                 $db = $database->open_connection();
-                $sql = "UPDATE parent SET email='$email' WHERE id_parent='$id_parent' LIMIT 1";
+                $sql = "UPDATE parent SET email='$email' WHERE id='$id' LIMIT 1";
                 $db->exec($sql);
                 $database->close_connection();
             }
@@ -37,14 +46,14 @@
                 echo $e->getMessage();
             }
         }
-        public function update_password($id_parent, $password)
+        public function update_password($id, $password)
         {
             require_once './DatabaseConnect.php';
             try
             {
                 $database = new DatabaseConnect();
                 $db = $database->open_connection();
-                $sql = "UPDATE parent SET password='$password' WHERE id_parent='$id_parent' LIMIT 1";
+                $sql = "UPDATE parent SET password='$password' WHERE id='$id' LIMIT 1";
                 $db->exec($sql);
                 $database->close_connection();
             }
@@ -53,14 +62,14 @@
                 echo $e->getMessage();
             }
         }
-        public function update_fname($id_parent, $fname)
+        public function update_fname($id, $fname)
         {
             require_once './DatabaseConnect.php';
             try
             {
                 $database = new DatabaseConnect();
                 $db = $database->open_connection();
-                $sql = "UPDATE parent SET fname='$fname' WHERE id_parent='$id_parent' LIMIT 1";
+                $sql = "UPDATE parent SET fname='$fname' WHERE id='$id' LIMIT 1";
                 $db->exec($sql);
                 $database->close_connection();
             }
@@ -69,14 +78,14 @@
                 echo $e->getMessage();
             }
         }
-        public function update_lname($id_parent, $lname)
+        public function update_lname($id, $lname)
         {
             require_once './DatabaseConnect.php';
             try
             {
                 $database = new DatabaseConnect();
                 $db = $database->open_connection();
-                $sql = "UPDATE parent SET lname='$lname' WHERE id_parent='$id_parent' LIMIT 1";
+                $sql = "UPDATE parent SET lname='$lname' WHERE id='$id' LIMIT 1";
                 $db->exec($sql);
                 $database->close_connection();
             }
@@ -85,14 +94,14 @@
                 echo $e->getMessage();
             }
         }
-        public function update_date_birth($id_parent, $date_birth)
+        public function update_date_birth($id, $date_birth)
         {
             require_once './DatabaseConnect.php';
             try
             {
                 $database = new DatabaseConnect();
                 $db = $database->open_connection();
-                $sql = "UPDATE parent SET date_birth='$date_birth' WHERE id_parent='$id_parent' LIMIT 1";
+                $sql = "UPDATE parent SET date_birth='$date_birth' WHERE id='$id' LIMIT 1";
                 $db->exec($sql);
                 $database->close_connection();
             }
@@ -101,14 +110,14 @@
                 echo $e->getMessage();
             }
         }
-        public function update_phone($id_parent, $phone)
+        public function update_phone($id, $phone)
         {
             require_once './DatabaseConnect.php';
             try
             {
                 $database = new DatabaseConnect();
                 $db = $database->open_connection();
-                $sql = "UPDATE parent SET phone='$phone' WHERE id_parent='$id_parent' LIMIT 1";
+                $sql = "UPDATE parent SET phone='$phone' WHERE id='$id' LIMIT 1";
                 $db->exec($sql);
                 $database->close_connection();
             }
@@ -118,14 +127,14 @@
             }
         }
         
-        public function update_status($id_parent, $status)
+        public function update_status($id, $status)
         {
             require_once './DatabaseConnect.php';
             try
             {
                 $database = new DatabaseConnect();
                 $db = $database->open_connection();
-                $sql = "UPDATE parent SET status='$status' WHERE id_parent='$id_parent' LIMIT 1";
+                $sql = "UPDATE parent SET status='$status' WHERE id='$id' LIMIT 1";
                 $db->exec($sql);
                 $database->close_connection();
             }
@@ -134,14 +143,14 @@
                 echo $e->getMessage();
             }
         }
-        public function update_last_login_date($id_parent, $last_login_date)
+        public function update_last_login_date($id, $last_login_date)
         {
             require_once './DatabaseConnect.php';
             try
             {
                 $database = new DatabaseConnect();
                 $db = $database->open_connection();
-                $sql = "UPDATE parent SET last_login_date='$last_login_date' WHERE id_parent='$id_parent' LIMIT 1";
+                $sql = "UPDATE parent SET last_login_date='$last_login_date' WHERE id='$id' LIMIT 1";
                 $db->exec($sql);
                 $database->close_connection();
             }

@@ -2,36 +2,38 @@
     session_start();
     if(!isset($_SESSION['user_id']) && empty($_SESSION['user_id']))
     {
-        header("Location: login.php");
+        header("Location: ./login.php");
     }
 
     include_once './private/functions.php'; 
     include './private/class/DatabaseConnect.php';     
-    include './private/class/Attendace.php';
-    include './private/class/Classroom.php';
-    include './private/class/ClassroomStudent.php';
-    include './private/class/Exam.php';
-    include './private/class/ExamResult.php';
-    include './private/class/ExamType.php';
-    include './private/class/Grade.php';
-    include './private/class/Parent.php';
-    include './private/class/Student.php';
-    include './private/class/Subject.php';
-    include './private/class/Teacher.php';
-
 
     $db = new DatabaseConnect(); 
-    $attendace = new Attendance();
-    $classroom = new Classroom();
-    $classroom_student = new ClassroomStudent();
-    $exam = new Exam();
-    $exam_result = new ExamResult();
-    $exam_type = new ExamType();
-    $grade = new Grade();
-    $parent = new Parent2(); 
-    $student = new Student();
-    $subject = new Subject();
-    $teacher = new Teacher();
-    
+    if($_SESSION['type'] == 'admin')
+    {
+        include './private/class/Admin.php';
+        $entry = new Admin();
+        $user = $entry->load_admin('*', $_SESSION['user_id']);
+    }
+    if($_SESSION['type'] == 'teacher')
+    {
+        include './private/class/Teacher.php';
+        $entry = new Teacher();
+        $user = $entry->load_teacher('*', $_SESSION['user_id']);
+    }
+    if($_SESSION['type'] == 'student')
+    {
+        include './private/class/Student.php';
+        $entry = new Student();
+        $user = $entry->load_student('*', $_SESSION['user_id']);
+    }
+    if($_SESSION['type'] == 'parent')
+    {
+        include './private/class/Parent.php';
+        $entry = new Parent2(); 
+        $user = $entry->load_parent('*', $_SESSION['user_id']);
+    }
+
+    echo 'Witaj '. $user[0]['fname'];
     //header('Location: ./public/index.html'); 
 ?>

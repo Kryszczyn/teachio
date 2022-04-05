@@ -2,7 +2,7 @@
     session_start();
     if(isset($_SESSION['user_id']) && !empty($_SESSION['user_id']))
     {
-        header("Location: index.php");
+        header("Location: ./public/index.html");
     }
 ?>
 <!DOCTYPE html>
@@ -57,15 +57,15 @@
                         <form>
                             <h3 class="fw-normal " style="letter-spacing: 1px;">Zaloguj się</h3>
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput" placeholder="login@teachio.pl" disabled>
+                                <input type="email" class="form-control login_input" id="floatingInput" placeholder="login@teachio.pl" disabled>
                                 <label for="floatingInput">Adres email</label>
                             </div>
                             <div class="form-floating">
-                                <input type="password" class="form-control" id="floatingPassword" placeholder="Hasło" disabled>
+                                <input type="password" class="form-control pwd_input" id="floatingPassword" placeholder="Hasło" disabled>
                                 <label for="floatingPassword">Hasło</label>
                             </div>
                             <div class="pt-1 my-4">
-                                <button class="btn btn-lg btn-outline-primary" type="button" disabled>Zaloguj</button>
+                                <button class="btn btn-lg btn-outline-primary login_btn" type="button" disabled>Zaloguj</button>
                             </div>
                         </form>
                     </div>
@@ -76,6 +76,7 @@
     
     <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./public/assets/js/notify.min.js"></script>
     <script src="./public/assets/js/login.js"></script>
 </body>
 </html>

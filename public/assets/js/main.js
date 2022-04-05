@@ -3,7 +3,7 @@ const loadMenu = () => {
     $.ajax({
         method: "POST",
         url: "./../teachio_service.php",
-        data: 'type=TEST',
+        data: 'type=WELCOME',
         success:function( data ) 
         {
             $('.container').html(data);

@@ -20,6 +20,15 @@
             $result=$stmt->fetchAll();
             return $result;
         }
+        public function load_custom_exam_result($query = "1=1"){
+            $database = new DatabaseConnect();
+            $db = $database->open_connection();
+            $stmt = $db->prepare("SELECT * FROM exam_result WHERE $query");
+            $stmt->execute();
+    
+            $result=$stmt->fetchAll();
+            return $result;
+        }
         public function load_exam_result_by_student($col, $id){
             $database = new DatabaseConnect();
             $db = $database->open_connection();
