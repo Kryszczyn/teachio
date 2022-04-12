@@ -36,7 +36,7 @@
         }
 
         //echo 'Witaj '. $user[0]['fname'];
-        header('Location: ./public/index.html'); 
+        header('Location: ./public/dashboard.php'); 
     }
 
     
