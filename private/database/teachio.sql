@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 05 Kwi 2022, 13:32
--- Wersja serwera: 10.4.13-MariaDB
--- Wersja PHP: 7.4.7
+-- Czas generowania: 13 Kwi 2022, 13:53
+-- Wersja serwera: 10.1.40-MariaDB
+-- Wersja PHP: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -244,15 +245,16 @@ INSERT INTO `student` (`id`, `email`, `password`, `fname`, `lname`, `date_birth`
 CREATE TABLE `subject` (
   `id_subject` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `grade_id` int(11) NOT NULL
+  `grade_id` int(11) NOT NULL,
+  `teacher_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Zrzut danych tabeli `subject`
 --
 
-INSERT INTO `subject` (`id_subject`, `name`, `grade_id`) VALUES
-(1, 'przyrka', 2);
+INSERT INTO `subject` (`id_subject`, `name`, `grade_id`, `teacher_id`) VALUES
+(1, 'przyrka', 2, 0);
 
 -- --------------------------------------------------------
 

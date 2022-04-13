@@ -2,7 +2,7 @@
     session_start();
     if(isset($_SESSION['user_id']) && !empty($_SESSION['user_id']))
     {
-        header("Location: ./public/index.html");
+        header("Location: index.php");
     }
 ?>
 <!DOCTYPE html>

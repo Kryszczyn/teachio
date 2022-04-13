@@ -16,6 +16,9 @@ const loadMenu = () => {
 
 loadMenu();
 
+let sidebar = $('.sidenav');
+$(sidebar).attr('data-color', 'info');
+
 $(function(){
     $('.logout').on('click', function(){
         $.ajax({
@@ -33,3 +36,4 @@ $(function(){
         
     });
 })
+

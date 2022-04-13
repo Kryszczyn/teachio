@@ -1,20 +1,5 @@
 jQuery(function(){
-    let typeButton = $('.login_type');
-    let loginInput = $('.login_input');
-    let pwdInput = $('.pwd_input');
-    let loginBtn = $('.login_btn');
-    let type = "";
-
-    $(typeButton).on('click', function(){
-        $(typeButton).removeClass('text-white');       
-        $(typeButton).removeClass('bg-primary');
-        $(this).addClass('text-white');
-        $(this).addClass('bg-primary');
-        type = $(this).data('usertype');
-        checkType(type);
-    });
-
-    $(loginBtn).on('click', function(){
+    const login = () => {
         let loginData = $(loginInput).val();
         let pwdData = $(pwdInput).val();
         if(loginData.length <= 0)
@@ -45,8 +30,27 @@ jQuery(function(){
             error:function(data){},
             complete:function() {}
         })
+    }
+    let typeButton = $('.login_type');
+    let loginInput = $('.login_input');
+    let pwdInput = $('.pwd_input');
+    let loginBtn = $('.login_btn');
+    let type = "";
+
+    $(typeButton).on('click', function(){
+        $(typeButton).removeClass('text-white');       
+        $(typeButton).removeClass('bg-primary');
+        $(this).addClass('text-white');
+        $(this).addClass('bg-primary');
+        type = $(this).data('usertype');
+        checkType(type);
     });
 
+    $(loginBtn).on('click', function(){
+        login();
+    });
+
+    
     const checkType = type => {
         if(type.length > 0)
         {
