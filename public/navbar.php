@@ -3,7 +3,7 @@
   error_reporting(0);
   //r2($userData);
 ?>
-<nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl position-sticky blur shadow-blur mt-4 left-auto top-1 z-index-sticky" id="navbarBlur" navbar-scroll="true">
+<nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl blur shadow-blur mt-4 left-auto top-1 " id="navbarBlur">
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
           <h6 class="font-weight-bolder mb-0"><?php echo $pageTitle; ?></h6>
@@ -15,7 +15,7 @@
               <input type="text" class="form-control" placeholder="Szukaj frazy...">
             </div>
           </div>
-          <ul class="navbar-nav  justify-content-end">
+          <ul class="navbar-nav justify-content-end">
             
             <li class="nav-item d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">

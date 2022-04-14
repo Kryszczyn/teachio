@@ -1,24 +1,12 @@
-const loadMenu = () => {
-    $.ajax({
-        method: "POST",
-        url: "./../teachio_service.php",
-        data: 'type=WELCOME',
-        success:function( data ) 
-        {
-            $('.container').html(data);
-        },
-        error:function( data ) {
-            console.log(data)
-        },
-        complete:function(){}
-    })
-}
-
-loadMenu();
-
-let sidebar = $('.sidenav');
-$(sidebar).attr('data-color', 'info');
-
+import {mockData} from './mockData.js';
+import {Calendar} from './calendar.js';
+//Initialize calendar
+document.addEventListener("DOMContentLoaded", async ()=>{
+    const cal = Calendar('calendar');
+    cal.bindData(mockData);
+    cal.render();
+});
+//Logout request
 $(function(){
     $('.logout').on('click', function(){
         $.ajax({
@@ -36,4 +24,5 @@ $(function(){
         
     });
 })
+
 

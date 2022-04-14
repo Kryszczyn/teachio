@@ -3,58 +3,6 @@
     session_start();
     $type = $_POST['type'];
     
-    if($type == "WELCOME")
-    {
-        if(!isset($_SESSION['user_id']) && empty($_SESSION['user_id']))
-        {
-            echo '<script>window.location.href = "./../login.php";</script>';
-        }
-        else
-        {
-            if($_SESSION['type'] == 'admin')
-            {
-                include_once './private/functions.php'; 
-                include './private/class/DatabaseConnect.php';     
-                $db = new DatabaseConnect(); 
-                include './private/class/Admin.php';
-                $entry = new Admin();
-                $user = $entry->load_admin('*', $_SESSION['user_id']);
-            }
-            if($_SESSION['type'] == 'teacher')
-            {
-                include_once './private/functions.php'; 
-                include './private/class/DatabaseConnect.php';     
-                $db = new DatabaseConnect(); 
-                include './private/class/Teacher.php';
-                $entry = new Teacher();
-                $user = $entry->load_teacher('*', $_SESSION['user_id']);
-            }
-            if($_SESSION['type'] == 'student')
-            {
-                include_once './private/functions.php'; 
-                include './private/class/DatabaseConnect.php';     
-                $db = new DatabaseConnect(); 
-                include './private/class/Student.php';
-                $entry = new Student();
-                $user = $entry->load_student('*', $_SESSION['user_id']);
-            }
-            if($_SESSION['type'] == 'parent')
-            {
-                include_once './private/functions.php'; 
-                include './private/class/DatabaseConnect.php';     
-                $db = new DatabaseConnect(); 
-                include './private/class/Parent.php';
-                $entry = new Parent2(); 
-                $user = $entry->load_parent('*', $_SESSION['user_id']);
-            }
-            $user_type = $_SESSION['type'];
-        }
-        
-        echo 'Witaj, nazywasz się '. $user[0]['fname'] . ' ' . $user[0]['lname'] . ' i jesteś ' . $user_type;
-
-        echo '<br><button class="logout">Wyloguj</button>';
-        
-    }
     if($type == "LOGIN")
     {
         include './private/functions.php';

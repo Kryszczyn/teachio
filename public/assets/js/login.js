@@ -1,4 +1,11 @@
 jQuery(function(){
+    let typeButton = $('.login_type');
+    let loginInput = $('.login_input');
+    let pwdInput = $('.pwd_input');
+    let loginBtn = $('.login_btn');
+    let type = "";
+    
+    // Login function
     const login = () => {
         let loginData = $(loginInput).val();
         let pwdData = $(pwdInput).val();
@@ -31,12 +38,8 @@ jQuery(function(){
             complete:function() {}
         })
     }
-    let typeButton = $('.login_type');
-    let loginInput = $('.login_input');
-    let pwdInput = $('.pwd_input');
-    let loginBtn = $('.login_btn');
-    let type = "";
-
+    
+    //Login type selection
     $(typeButton).on('click', function(){
         $(typeButton).removeClass('text-white');       
         $(typeButton).removeClass('bg-primary');
@@ -45,12 +48,12 @@ jQuery(function(){
         type = $(this).data('usertype');
         checkType(type);
     });
-
+    //Login button click event
     $(loginBtn).on('click', function(){
         login();
     });
 
-    
+    //type selection check function
     const checkType = type => {
         if(type.length > 0)
         {
