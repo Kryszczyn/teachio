@@ -66,42 +66,14 @@
     <div class="container-fluid py-4">
 
       <div class="col-md-4">
-        <button type="button" class="btn bg-gradient-success btn-block mb-3" data-bs-toggle="modal" data-bs-target="#eventAddModal">
+        <button type="button" class="modal-open btn bg-gradient-success btn-block mb-3" data-bs-toggle="modal" data-type="DODAJ_WYDARZENIE_KALENDARZ" data-refresh="1" data-values="jakaś wartość" data-bs-target="#modal">
           Dodaj wydarzenie
         </button>
       </div>
 
       <div class="col-md-12 bg-white border-radius-xl shadow-blur" id="calendar"></div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="eventAddModal" tabindex="-1" role="dialog" aria-labelledby="eventAddModalTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Dodaj wydarzenie</h5>
-                <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form>
-                  <div class="form-group">
-                    <label for="event-name" class="col-form-label">Nazwa wydarzenia:</label>
-                    <input type="text" class="form-control" value="" id="event-name">
-                  </div>
-                  <div class="form-group">
-                    <label for="event-date" class="col-form-label">Data:</label>
-                    <input type="datetime-local" class="form-control" id="event-date">
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Anuluj</button>
-                <button type="button" class="btn bg-gradient-primary">Wyślij</button>
-              </div>
-            </div>
-          </div>
-        </div>
+      
         
 
     </div>

@@ -258,7 +258,7 @@ function toggleSidenav() {
 // Resize navbar color depends on configurator active type of sidenav
 
 let referenceButtons = document.querySelector('[data-class]');
-
+/*
 window.addEventListener("resize", navbarColorOnResize);
 
 function navbarColorOnResize() {
@@ -273,7 +273,7 @@ function navbarColorOnResize() {
     sidenav.classList.remove('bg-transparent');
   }
 }
-
+*/
 // Deactivate sidenav type buttons on resize and small screens
 window.addEventListener("resize", sidenavTypeOnResize);
 window.addEventListener("load", sidenavTypeOnResize);
