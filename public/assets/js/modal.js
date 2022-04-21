@@ -43,48 +43,47 @@ class Modal{
         {
             if(this.itemDataValues[key].length > 0)
             {
-                //console.log($(this.itemDataValues[key]).prop('type') );
                 switch($(this.itemDataValues[key]).prop('type')){
                     case 'select':
                         resultData[key] = {
-                            name:$(this.itemDataValues[key].select).data('text'),
-                            value:$(this.itemDataValues[key].select).val(),
+                            name:$(this.itemDataValues[key]).data('text'),
+                            value:'',
                         }
                         break;
                     case 'text':
                         resultData[key] = {
-                            name:$(this.itemDataValues[key].inputText).data('text'),
-                            value:$(this.itemDataValues[key].inputText).val(),
+                            name:$(this.itemDataValues[key]).data('text'),
+                            value:'',
                         }
                         break;
                     case 'textarea':
                         resultData[key] = {
-                            name:$(this.itemDataValues[key].textarea).data('text'),
-                            value:$(this.itemDataValues[key].textarea).val(),
+                            name:$(this.itemDataValues[key]).data('text'),
+                            value:'',
                         }
                         break;
                     case 'checkbox':
                         resultData[key] = {
-                            name:$(this.itemDataValues[key].inputCheckbox).data('text'),
-                            value: $(this.itemDataValues[key].inputCheckbox).prop('checked', true) ? this.itemDataValues[key].inputCheckbox.val() : '',
+                            name:$(this.itemDataValues[key]).data('text'),
+                            value: '',
                         }
                         break;
                     case 'radio':
                         resultData[key] = {
-                            name:$(this.itemDataValues[key].inputRadio).data('text'),
-                            value: $(this.itemDataValues[key].inputRadio).prop('checked', true) ? this.itemDataValues[key].inputRadio.val() : '',
+                            name:$(this.itemDataValues[key]).data('text'),
+                            value: '',
                         }
                         break;
                     case 'datetime-local':
                         resultData[key] = {
-                            name:$(this.itemDataValues[key].inputDateTime).data('text'),
-                            value: $(this.itemDataValues[key].inputDateTime).val()
+                            name:$(this.itemDataValues[key]).data('text'),
+                            value: ''
                         }
                         break;
                     case 'date':
                         resultData[key] = {
-                            name:$(this.itemDataValues[key].inputDate).data('text'),
-                            value: $(this.itemDataValues[key].inputDate).val()
+                            name:$(this.itemDataValues[key]).data('text'),
+                            value: ''
                         }
                         break;
                     default:
@@ -94,9 +93,11 @@ class Modal{
             else continue;
         }
         
-        console.log(resultData);
+        return resultData;
     }
-    //updateModal(){}
+    updateModal(){
+        console.log(typeof this.getModalData());
+    }
 }
 
 export default Modal;

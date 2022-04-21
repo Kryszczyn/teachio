@@ -26,8 +26,8 @@
               echo '</form>';
             echo '</div>';
             echo '<div class="modal-footer">';
-              echo '<button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Anuluj</button>';
-              echo '<button type="button" class="btn bg-gradient-primary">Wyślij</button>';
+              echo '<button type="button" class="btn bg-gradient-secondary modal-decline" data-bs-dismiss="modal">Anuluj</button>';
+              echo '<button type="button" class="btn bg-gradient-primary modal-accept">Wyślij</button>';
             echo '</div>';
 
             $html = ob_get_contents();
