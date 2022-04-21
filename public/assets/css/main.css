@@ -1,8 +1,11 @@
 @import './addons.css'; 
-.menu-item{
-    transition: .2s;
+.plan_background{
+    background-color: #21d4fd;
+
 }
-.menu-item:hover{
-    background-color: #2321ff;
-    color: #f1f1f1;
+.kolumna1_background{
+    background-color: #E1E1E1;
+}
+.kolumna2_background{
+    background-color: #F2F2F2;
 }
