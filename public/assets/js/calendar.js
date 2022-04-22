@@ -9,18 +9,6 @@ export const Calendar = (id) => ({
     el: undefined,
     y: undefined,
     m: undefined,
-    onDateClick(e) {
-        StopEventPropagation(e);
-        const el = e.srcElement;
-        console.log('click'); 
-        console.log(el);
-    },
-    onEventClick(e) {
-        StopEventPropagation(e);
-        const el = e.srcElement;
-        console.log('click'); 
-        console.log(el); 
-    },
     bindData(events) {
         this.data = events.sort((a,b) => {
             if ( a.time < b.time ) return -1;
@@ -40,8 +28,15 @@ export const Calendar = (id) => ({
             this.data.forEach((ev)=>{
                 let evTime = moment(ev.time);
                 if (evTime.year() == y && evTime.month() == m && evTime.date() == d) {
+                    let openModal = '';
+                    let dataModal = '';
+                    if(ev.user_type == "admin" || ev.user_type == "teacher")
+                    {
+                        openModal = 'modal-open';
+                        dataModal = 'data-bs-toggle="modal" data-type="EDYTUJ_WYDARZENIE_KALENDARZ" data-refresh="1" data-values="&id=${ev.id}" data-bs-target="#modal"'
+                    } 
                     let frgEvent = document.createRange().createContextualFragment(`
-                        <div time="${ev.time}" class="event ${ev.cls}">${evTime.format('H:mm')} ${ev.desc}</div>
+                        <div time="${ev.time}" class="event ${openModal} ${ev.cls}" data-toggle="tooltip" data-placement="top" ${dataModal} title="${ev.desc}" > ${ev.name}</div>
                     `);
                     divEvents.appendChild(frgEvent);
                     let divEvent = divEvents.querySelector(`.event[time='${ev.time}']`);

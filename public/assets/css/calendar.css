@@ -111,6 +111,10 @@ Calendar Styling */
 .calendar .days li.outside .date  {
   color: #ddd;
 }
-.calendar .days li.today .date  {
-  text-decoration: underline;
+.calendar .days li.today {
+  background-color: #89e9ff;
+  transition: .2s;
+}
+.calendar .days li:hover:not(.calendar .days li.today) {
+  background-color: #ececec;
 }

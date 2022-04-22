@@ -3,13 +3,13 @@ class Modal{
     {
         this.obj = obj;
         this.openBtn = openBtn;
-    }
-
-    modalOptions(){
         this.refresh = $(this.openBtn).data('refresh');
         this.type = $(this.openBtn).data('type');
         this.values = $(this.openBtn).data('values');
         this.itemDataValues = {};
+        this.updateRequest = '';
+        this.updateId = '';
+        this.resultData = undefined;
     }
 
     openModal(){
@@ -18,10 +18,13 @@ class Modal{
         $.ajax({
             method: "POST",
             url: "./../modal_service.php",
-            data: 'type='+this.type+'&values='+this.values,
+            data: 'type='+this.type+this.values,
             type: 'json',
             success:function(data) {
-                $(modalContent).html(JSON.parse(data));
+                let obj = JSON.parse(data);
+                that.updateRequest = obj.update;
+                that.updateId = obj.id;
+                $(modalContent).html(obj.html);
             },
             error:function() {},
             complete:function() {},
@@ -33,70 +36,122 @@ class Modal{
             that.itemDataValues.inputRadio = $(modalContent).find('input[type="radio"]');
             that.itemDataValues.inputDateTime = $(modalContent).find('input[type="datetime-local"]');
             that.itemDataValues.inputDate = $(modalContent).find('input[type="date"]');
-            that.getModalData();
+            
+            $(modalContent).find('.modal-accept').on('click', function(){
+                that.getModalData()
+                $.when().then(function(){
+                    
+                })
+            });
         });
     }
-    //!do Przerobienia aby jQ łapało modala jako obiekt
+    
     getModalData(){
         let resultData = {};
+        let temp = 0;
         for(let key in this.itemDataValues)
         {
             if(this.itemDataValues[key].length > 0)
             {
-                switch($(this.itemDataValues[key]).prop('type')){
-                    case 'select':
-                        resultData[key] = {
-                            name:$(this.itemDataValues[key]).data('text'),
-                            value:'',
+                if($(this.itemDataValues[key]).prop('type') == 'select'){
+                    $(this.itemDataValues[key]).each(function(){
+                        resultData[temp] = {
+                            name: $(this).data('text'),
+                            value: $(this).val()
                         }
-                        break;
-                    case 'text':
-                        resultData[key] = {
-                            name:$(this.itemDataValues[key]).data('text'),
-                            value:'',
+                        temp++;
+                    });
+                }
+                if($(this.itemDataValues[key]).prop('type') == 'text'){
+                    $(this.itemDataValues[key]).each(function(){
+                        resultData[temp] = {
+                            name: $(this).data('text'),
+                            value: $(this).val()
                         }
-                        break;
-                    case 'textarea':
-                        resultData[key] = {
-                            name:$(this.itemDataValues[key]).data('text'),
-                            value:'',
+                        temp++;
+                    });
+                }
+                if($(this.itemDataValues[key]).prop('type') == 'textarea'){
+                    $(this.itemDataValues[key]).each(function(){
+                        resultData[temp] = {
+                            name: $(this).data('text'),
+                            value: $(this).val()
                         }
-                        break;
-                    case 'checkbox':
-                        resultData[key] = {
-                            name:$(this.itemDataValues[key]).data('text'),
-                            value: '',
+                        temp++;
+                    });
+                }
+                if($(this.itemDataValues[key]).prop('type') == 'checkbox'){
+                    $(this.itemDataValues[key]).each(function(){
+                        resultData[temp] = {
+                            name: $(this).data('text'),
+                            value: $(this).is(':checked')
                         }
-                        break;
-                    case 'radio':
-                        resultData[key] = {
-                            name:$(this.itemDataValues[key]).data('text'),
-                            value: '',
+                        temp++;
+                    });
+                }
+                if($(this.itemDataValues[key]).prop('type') == 'radio'){
+                    $(this.itemDataValues[key]).each(function(){
+                        resultData[temp] = {
+                            name: $(this).data('text'),
+                            value: $(this).is(':checked')
                         }
-                        break;
-                    case 'datetime-local':
-                        resultData[key] = {
-                            name:$(this.itemDataValues[key]).data('text'),
-                            value: ''
+                        temp++;
+                    });
+                }
+                if($(this.itemDataValues[key]).prop('type') == 'datetime-local'){
+                    $(this.itemDataValues[key]).each(function(){
+                        resultData[temp] = {
+                            name: $(this).data('text'),
+                            value: $(this).val()
                         }
-                        break;
-                    case 'date':
-                        resultData[key] = {
-                            name:$(this.itemDataValues[key]).data('text'),
-                            value: ''
+                        temp++;
+                    });
+                }
+                if($(this.itemDataValues[key]).prop('type') == 'date'){
+                    $(this.itemDataValues[key]).each(function(){
+                        resultData[temp] = {
+                            name: $(this).data('text'),
+                            value: $(this).val()
                         }
-                        break;
-                    default:
-                        break;
+                        temp++;
+                    });
                 }
             }
             else continue;
         }
-        
-        return resultData;
+        this.resultData = resultData;
+        this.updateModal();
     }
     updateModal(){
-        console.log(typeof this.getModalData());
+        let that = this;
+        let dataObj = that.resultData;
+        let str = '';
+        for(let key in dataObj){
+            str += dataObj[key].name+'='+dataObj[key].value+'&';
+        }
+        str = str.slice(0,-1);
+        $.ajax({
+            method: "POST",
+            url: "./../modal_service.php",
+            data: 'type='+that.updateRequest+'&'+str+'&id='+that.updateId,
+            success:function(data) {
+                let obj = JSON.parse(data);
+                if(obj.res == false)
+                {
+                    $.notify(obj.html, "error");
+                }else
+                {
+                    this.refresh = true;
+                }
+            },
+            error:function() {},
+            complete:function() {
+                if(this.refresh == 1){
+                    delete this
+                    location.reload();
+                }
+            }
+        });
     }
 }
 

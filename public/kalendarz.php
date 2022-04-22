@@ -64,13 +64,14 @@
     <?php include_once './navbar.php'; ?>
 
     <div class="container-fluid py-4">
-
-      <div class="col-md-4">
-        <button type="button" class="modal-open btn bg-gradient-success btn-block mb-3" data-bs-toggle="modal" data-type="DODAJ_WYDARZENIE_KALENDARZ" data-refresh="1" data-values="jakaś wartość" data-bs-target="#modal">
-          Dodaj wydarzenie
-        </button>
-      </div>
-
+      <?php
+      if($_SESSION['type'] == 'admin' || $_SESSION['type'] == 'teacher')
+      {
+        echo '<div class="col-md-4">
+                <button type="button" class="modal-open btn bg-gradient-success btn-block mb-3" data-bs-toggle="modal" data-type="DODAJ_WYDARZENIE_KALENDARZ" data-refresh="1" data-values="" data-bs-target="#modal">Dodaj wydarzenie</button>
+              </div>';
+      }
+      ?>
       <div class="col-md-12 bg-white border-radius-xl shadow-blur" id="calendar"></div>
 
       
@@ -89,7 +90,39 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <script src="./assets/js/soft-ui-dashboard.js"></script>
   <script src="./assets/js/moment.min.js"></script>
+  <script type="module" src="./assets/js/notify.min.js"></script>
   <script type="module" src="./assets/js/main.js"></script>
+  <script type="module">
+    //Initialize calendar
+    import {Calendar} from './assets/js/calendar.js';
+    import Modal from './assets/js/modal.js';
+    $(function(){
+      $.ajax({
+        type: 'POST',
+        url: './../teachio_service.php',
+        data: 'type=INIT_CALENDAR',
+        success: function(data){
+          let obj = JSON.parse(data);
+
+          const cal = Calendar('calendar');
+          cal.bindData(obj);
+          cal.render();
+          
+        },
+        error: function(data){
+          console.log(data);
+        },
+        complete: function(data){
+          $('.event').tooltip();
+          $('.modal-open').on('click', function(){
+            let modal = new Modal($('.modal-content'), $(this));
+            modal.openModal();
+          })
+        }
+      })
+    })
+  </script>
+  
 </body>
 
 </html>

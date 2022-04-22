@@ -61,4 +61,24 @@
         header('Location: login.php');
         exit;
     }
+    if($type == 'INIT_CALENDAR')
+    {
+        include './private/functions.php';
+        include './private/class/DatabaseConnect.php';
+        include './private/class/Event.php';
+        
+        $event = new Event();
+        $all_events = $event->load_all_event();
+        $resultArr = [];
+        foreach($all_events as $k => $v)
+        {
+            $resultArr[$k]->id = $all_events[$k]['id'];
+            $resultArr[$k]->name = $all_events[$k]['name'];
+            $resultArr[$k]->time = $all_events[$k]['date'];
+            $resultArr[$k]->cls = 'bg-green-alt';
+            $resultArr[$k]->desc = $all_events[$k]['description'];
+            $resultArr[$k]->user_type = $_SESSION['type'];
+        }
+        echo json_encode($resultArr);
+    }
 ?>
