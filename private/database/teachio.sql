@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 13 Kwi 2022, 13:53
+-- Czas generowania: 25 Kwi 2022, 12:31
 -- Wersja serwera: 10.1.40-MariaDB
 -- Wersja PHP: 7.3.5
 
@@ -104,6 +104,27 @@ CREATE TABLE `classroom_student` (
 
 INSERT INTO `classroom_student` (`classroom_id`, `student_id`) VALUES
 (1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `event`
+--
+
+CREATE TABLE `event` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `description` varchar(250) NOT NULL,
+  `date` date NOT NULL,
+  `date_added` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin2;
+
+--
+-- Zrzut danych tabeli `event`
+--
+
+INSERT INTO `event` (`id`, `name`, `description`, `date`, `date_added`) VALUES
+(1, 'apel', 'siemano kolano', '2022-04-26', '2022-04-25');
 
 -- --------------------------------------------------------
 
@@ -298,6 +319,12 @@ ALTER TABLE `classroom`
   ADD PRIMARY KEY (`id_classroom`);
 
 --
+-- Indeksy dla tabeli `event`
+--
+ALTER TABLE `event`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeksy dla tabeli `exam`
 --
 ALTER TABLE `exam`
@@ -354,6 +381,12 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `classroom`
   MODIFY `id_classroom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT dla tabeli `event`
+--
+ALTER TABLE `event`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT dla tabeli `exam`

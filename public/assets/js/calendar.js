@@ -46,7 +46,8 @@ export const Calendar = (id) => ({
         });
     },
     render(y, m) {
-
+        console.log(y)
+        console.log(m)
         if (isNaN(y) && isNaN(this.y)) {
             this.y = moment().year();
         } else if ((!isNaN(y) && isNaN(this.y)) || (!isNaN(y) && !isNaN(this.y))) {
