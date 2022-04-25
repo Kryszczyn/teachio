@@ -33,7 +33,7 @@ export const Calendar = (id) => ({
                     if(ev.user_type == "admin" || ev.user_type == "teacher")
                     {
                         openModal = 'modal-open';
-                        dataModal = 'data-bs-toggle="modal" data-type="EDYTUJ_WYDARZENIE_KALENDARZ" data-refresh="1" data-values="&id=${ev.id}" data-bs-target="#modal"'
+                        dataModal = 'data-bs-toggle="modal" data-type="EDYTUJ_WYDARZENIE_KALENDARZ" data-refresh="1" data-values="&id='+ev.id+'" data-bs-target="#modal"'
                     } 
                     let frgEvent = document.createRange().createContextualFragment(`
                         <div time="${ev.time}" class="event ${openModal} ${ev.cls}" data-toggle="tooltip" data-placement="top" ${dataModal} title="${ev.desc}" > ${ev.name}</div>
