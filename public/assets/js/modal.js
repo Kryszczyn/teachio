@@ -39,9 +39,6 @@ class Modal{
             
             $(modalContent).find('.modal-accept').on('click', function(){
                 that.getModalData()
-                $.when().then(function(){
-                    
-                })
             });
         });
     }
@@ -53,7 +50,7 @@ class Modal{
         {
             if(this.itemDataValues[key].length > 0)
             {
-                if($(this.itemDataValues[key]).prop('type') == 'select'){
+                if($(this.itemDataValues[key]).is('select')){
                     $(this.itemDataValues[key]).each(function(){
                         resultData[temp] = {
                             name: $(this).data('text'),

@@ -92,27 +92,27 @@
             <p class="fw-bold m-0 text-white">-</p>
             <p class="fw-bold m-0 text-white">8:00</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna1_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Język Angielski</p>
             <p class="fw-bold m-0">A. Sylańska</p>
             <p class="fw-bold m-0">S.108</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna2_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Geografia</p>
             <p class="fw-bold m-0">S. Mata</p>
             <p class="fw-bold m-0">S.110</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna1_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Język Polski</p>
             <p class="fw-bold m-0">F. Kowal</p>
             <p class="fw-bold m-0">S.216</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna2_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">W-F</p>
             <p class="fw-bold m-0">U. Szanka</p>
             <p class="fw-bold m-0">S.Gimnastyczna</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna1_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Język Niemiecki</p>
             <p class="fw-bold m-0">B. Stalin</p>
             <p class="fw-bold m-0">S.115</p>
@@ -124,27 +124,27 @@
             <p class="fw-bold m-0 text-white">-</p>
             <p class="fw-bold m-0 text-white">8:50</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna1_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Biologia</p>
             <p class="fw-bold m-0">W. Kara</p>
             <p class="fw-bold m-0">S.210</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna2_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Geografia</p>
             <p class="fw-bold m-0">S. Mata</p>
             <p class="fw-bold m-0">S.110</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna1_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Język Polski</p>
             <p class="fw-bold m-0">F. Kowal</p>
             <p class="fw-bold m-0">S.216</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna2_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">W-F</p>
             <p class="fw-bold m-0">U. Szanka</p>
             <p class="fw-bold m-0">S.Gimnastyczna</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna1_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Język Niemiecki</p>
             <p class="fw-bold m-0">B. Stalin</p>
             <p class="fw-bold m-0">S.115</p>
@@ -156,27 +156,27 @@
             <p class="fw-bold m-0 text-white">-</p>
             <p class="fw-bold m-0 text-white">9:40</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna1_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Matematyka</p>
             <p class="fw-bold m-0">M. Królik</p>
             <p class="fw-bold m-0">S.121</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna2_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Matematyka</p>
             <p class="fw-bold m-0">M. Królik</p>
             <p class="fw-bold m-0">S.121</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna1_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Matematyka</p>
             <p class="fw-bold m-0">M. Królik</p>
             <p class="fw-bold m-0">S.121</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna2_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Język Polski</p>
             <p class="fw-bold m-0">F. Kowal</p>
             <p class="fw-bold m-0">S.216</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna1_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Matematyka</p>
             <p class="fw-bold m-0">M. Królik</p>
             <p class="fw-bold m-0">S.121</p>
@@ -188,27 +188,27 @@
             <p class="fw-bold m-0 text-white">-</p>
             <p class="fw-bold m-0 text-white">10:30</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna1_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Język Polski</p>
             <p class="fw-bold m-0">F. Kowal</p>
             <p class="fw-bold m-0">S.216</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna2_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Matematyka</p>
             <p class="fw-bold m-0">M. Królik</p>
             <p class="fw-bold m-0">S.121</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna1_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Matematyka</p>
             <p class="fw-bold m-0">M. Królik</p>
             <p class="fw-bold m-0">S.121</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna2_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Geografia</p>
             <p class="fw-bold m-0">S. Mata</p>
             <p class="fw-bold m-0">S.110</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna1_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Język Angielski</p>
             <p class="fw-bold m-0">A. Sylańska</p>
             <p class="fw-bold m-0">S.108</p>
@@ -220,27 +220,27 @@
             <p class="fw-bold m-0 text-white">-</p>
             <p class="fw-bold m-0 text-white">11:20</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna1_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Język Polski</p>
             <p class="fw-bold m-0">F. Kowal</p>
             <p class="fw-bold m-0">S.216</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna2_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Chemia</p>
             <p class="fw-bold m-0">A. Szycha</p>
             <p class="fw-bold m-0">S.105</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna1_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Język Niemiecki</p>
             <p class="fw-bold m-0">B. Stalin</p>
             <p class="fw-bold m-0">S.115</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna2_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Chemia</p>
             <p class="fw-bold m-0">A. Szycha</p>
             <p class="fw-bold m-0">S.105</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna1_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Język Angielski</p>
             <p class="fw-bold m-0">A. Sylańska</p>
             <p class="fw-bold m-0">S.108</p>
@@ -252,27 +252,27 @@
             <p class="fw-bold m-0 text-white">-</p>
             <p class="fw-bold m-0 text-white">12:15</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna1_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Fizyka</p>
             <p class="fw-bold m-0">S. Dąb</p>
             <p class="fw-bold m-0">S.205</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna2_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Historia</p>
             <p class="fw-bold m-0">A. Himler</p>
             <p class="fw-bold m-0">S.201</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna1_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Język Niemiecki</p>
             <p class="fw-bold m-0">B. Stalin</p>
             <p class="fw-bold m-0">S.115</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna2_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Biologia</p>
             <p class="fw-bold m-0">W. Kara</p>
             <p class="fw-bold m-0">S.210</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna1_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Historia</p>
             <p class="fw-bold m-0">A. Himler</p>
             <p class="fw-bold m-0">S.201</p>
@@ -284,27 +284,27 @@
             <p class="fw-bold m-0 text-white">-</p>
             <p class="fw-bold m-0 text-white">13:15</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna1_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Religia</p>
             <p class="fw-bold m-0">B. Szatan</p>
             <p class="fw-bold m-0">S.119</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna2_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">W-F</p>
             <p class="fw-bold m-0">U. Szanka</p>
             <p class="fw-bold m-0">S.Gimnastyczna</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna1_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">WOS</p>
             <p class="fw-bold m-0">B. Puting</p>
             <p class="fw-bold m-0">S.219</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna2_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Fizyka</p>
             <p class="fw-bold m-0">S. Dąb</p>
             <p class="fw-bold m-0">S.205</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna1_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Język Polski</p>
             <p class="fw-bold m-0">F. Kowal</p>
             <p class="fw-bold m-0">S.216</p>
@@ -316,27 +316,27 @@
             <p class="fw-bold m-0 text-white">-</p>
             <p class="fw-bold m-0 text-white">14:05</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna1_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0"></p>
             <p class="fw-bold m-0">-</p>
             <p class="fw-bold m-0"></p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna2_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">W-F</p>
             <p class="fw-bold m-0">U. Szanka</p>
             <p class="fw-bold m-0">S.Gimnastyczna</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna1_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Plastyka</p>
             <p class="fw-bold m-0">D. Awanka</p>
             <p class="fw-bold m-0">S.219</p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna2_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0"></p>
             <p class="fw-bold m-0">-</p>
             <p class="fw-bold m-0"></p>
           </div> 
-          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center kolumna1_background">
+          <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_col">
             <p class="fw-bold m-0">Język Polski</p>
             <p class="fw-bold m-0">F. Kowal</p>
             <p class="fw-bold m-0">S.216</p>

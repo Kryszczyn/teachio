@@ -13,7 +13,7 @@
         public function load_subject($col, $id){
             $database = new DatabaseConnect();
             $db = $database->open_connection();
-            $stmt = $db->prepare("SELECT $col FROM subject WHERE id_subject=?");
+            $stmt = $db->prepare("SELECT $col FROM subject WHERE id=?");
             $stmt->bindValue(1, $id, PDO::PARAM_INT);
             $stmt->execute();
     
@@ -24,7 +24,7 @@
         public function load_custom_subject($query = "1=1"){
             $database = new DatabaseConnect();
             $db = $database->open_connection();
-            $stmt = $db->prepare("SELECT * FROM subcject WHERE $query");
+            $stmt = $db->prepare("SELECT * FROM subject WHERE $query");
             $stmt->execute();
     
             $result=$stmt->fetchAll();
@@ -38,7 +38,7 @@
             {
                 $database = new DatabaseConnect();
                 $db = $database->open_connection();
-                $sql = "UPDATE subject SET name='$name' WHERE id_subject='$id_subject' LIMIT 1";
+                $sql = "UPDATE subject SET name='$name' WHERE id='$id_subject' LIMIT 1";
                 $db->exec($sql);
                 $database->close_connection();
             }
@@ -47,14 +47,14 @@
                 echo $e->getMessage();
             }
         }
-        public function update_grade_id($id_subject, $grade_id)
+        public function update_description($id_subject, $description)
         {
             require_once './DatabaseConnect.php';
             try
             {
                 $database = new DatabaseConnect();
                 $db = $database->open_connection();
-                $sql = "UPDATE subject SET grade_id='$grade_id' WHERE id_subject='$id_subject' LIMIT 1";
+                $sql = "UPDATE subject SET description='$description' WHERE id='$id_subject' LIMIT 1";
                 $db->exec($sql);
                 $database->close_connection();
             }
@@ -64,17 +64,17 @@
             }
         }
 
-        public function insert_subject($name, $grade_id)
+        public function insert_subject($name, $description)
         {
             try
             {
                 $database = new DatabaseConnect();
                 $db = $database->open_connection();
-                $sql = "INSERT INTO grade (name, grade_id) VALUES (::name, ::grade_id)";
+                $sql = "INSERT INTO subject (name, description) VALUES (::name, ::description)";
                 $stmt = $db->prepare($sql);
                 $stmt->execute(array(
                     '::name' => $name,
-                    '::grade_id' => $grade_id
+                    '::description' => $description
                 ));
                 $database->close_connection();
             }

@@ -3,9 +3,16 @@
     background-color: #21d4fd;
 
 }
-.kolumna1_background{
+.plan_col:nth-child(n){
     background-color: #E1E1E1;
 }
-.kolumna2_background{
+.plan_col:nth-child(2n){
     background-color: #F2F2F2;
+}
+
+.note_item{
+    width: 28px;
+    max-width: 28px;
+    height: 28px;
+    max-height: 28px;
 }

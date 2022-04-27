@@ -194,4 +194,122 @@
         }
         
     }
+    if($modal == "DODAJ_OCENE")
+    {
+      
+      $user_id = $_SESSION['user_id'];
+      $user_type = $_SESSION['type'];
+
+      $id = $_POST['id'];
+      include './private/class/DatabaseConnect.php';
+      include './private/class/Subject.php';
+      include './private/class/SubjectTeacher.php';
+      include './private/class/SubjectGrade.php';
+
+      $subject = new Subject();
+      $allSubjects = $subject->load_all_subject();
+
+      $notesArr = ['1', '2-', '2', '2+', '3-', '3', '3+', '4-', '4', '4+', '5-', '5', '5+', '6'];
+
+      ob_start();
+        echo '<div class="modal-header">
+            <h5 class="modal-title">Dodaj Ocene</h5>
+              <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="subject-note" class="col-form-label">Ocena:</label>';
+                  echo '<select class="form-control" data-text="ocena_ocena" id="subject-note">';
+                    echo '<option selected disabled>Wybierz ocenę</option>';
+                    for($i=0; $i<count($notesArr); $i++)
+                    {
+                      echo '<option value="'.$notesArr[$i].'">'.$notesArr[$i].'</option>';
+                    }
+                    echo '</select>';
+                    echo '</div>
+                    <div class="form-group">
+                    <label for="subject-name" class="col-form-label">Przedmiot:</label>';
+                    echo '<select class="form-control" data-text="przedmiot_ocena" id="subject-name">';
+                    echo '<option selected disabled>Wybierz przedmiot</option>';
+                    foreach($allSubjects as $k)
+                    {
+                      echo '<option value="'.$k['id'].'">'.$k['name'].'</option>';
+                    }
+                  echo '</select>';
+
+                echo '</div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn bg-gradient-secondary modal-decline" data-bs-dismiss="modal">Anuluj</button>
+              <button type="button" class="btn bg-gradient-primary modal-accept">Wyślij</button>
+            </div>';
+
+            $html = ob_get_contents();
+        ob_end_clean();
+
+        $array = array(
+            'html' => $html,
+            'update' => 'DODAJ_OCENE_UP'
+        );
+        //decode json data
+        echo json_encode($array);
+    }
+    if($modal == "DODAJ_OCENE_UP")
+    {
+        include './private/class/DatabaseConnect.php';
+        include './private/class/Subject.php';
+        include './private/class/SubjectTeacher.php';
+        include './private/class/SubjectGrade.php';
+        include './private/class/Grade.php';
+
+
+        $ocena = $_POST['ocena_ocena'];
+        $przedmiot = $_POST['przedmiot_ocena'];
+
+
+        if(!empty($ocena) && !empty($przedmiot) && !is_null($ocena) && !is_null($przedmiot))
+        {
+          $subjectTeacher = new SubjectTeacher();
+          $subjectGrade = new SubjectGrade();
+          $grade = new Grade();
+          
+          $grade->insert_grade($ocena, $przedmiot);
+          $grade_id = !empty($grade->last_id) ? $grade->last_id : null;
+          
+          $subjectGrade->insert_subjectGrade($przedmiot, $grade_id);
+          
+          $subjectTeacher->insert_subjectTeacher($przedmiot, $_SESSION['user_id']);
+
+          $res = true;
+          $html = '';
+          $array = array(
+            'html' => $html,
+            'res' => $res
+          );
+          echo json_encode($res);
+        }
+        else{
+          $res = false;
+          if(empty($ocena) || is_null($ocena))
+          {
+            $html = "Wprowadź ocenę";
+          }
+          if(empty($przedmiot) || is_null($przedmiot))
+          {
+            $html = "Podaj przedmiot";
+          }
+         
+          $array = array(
+            'html' => $html,
+            'res' => $res
+          );
+          echo json_encode($array);
+          die();
+        }
+        
+    }
 ?>

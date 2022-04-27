@@ -48,4 +48,18 @@ if(!function_exists('login_user'))
         }
     }
 }
+if(!function_exists('calc_avg')){
+    function calc_weighted_average($grades)
+    {
+        $total = 0;
+        $total_weight = 0;
+        foreach($grades as $k => $v)
+        {
+            $total += $v['grade'] * $v['weight'];
+            $total_weight += $v['weight'];
+        }
+        $avg = $total / $total_weight;
+        return $avg;
+    }
+}
 ?>

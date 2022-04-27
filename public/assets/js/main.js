@@ -2,7 +2,6 @@ import Modal from './modal.js';
 
 $(function(){
     $('.modal-open').on('click', function(){
-        console.log($(this));
         let modal = new Modal($('.modal-content'), $(this));
         modal.openModal();
     });
