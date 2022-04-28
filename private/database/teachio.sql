@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 25 Kwi 2022, 12:31
+-- Czas generowania: 28 Kwi 2022, 13:22
 -- Wersja serwera: 10.1.40-MariaDB
 -- Wersja PHP: 7.3.5
 
@@ -30,12 +30,12 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
-  `fname` varchar(45) NOT NULL,
-  `lname` varchar(45) NOT NULL,
+  `email` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `password` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `fname` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `lname` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `date_birth` date NOT NULL,
-  `phone` varchar(9) NOT NULL,
+  `phone` varchar(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `status` int(11) NOT NULL,
   `last_login_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin2;
@@ -113,8 +113,8 @@ INSERT INTO `classroom_student` (`classroom_id`, `student_id`) VALUES
 
 CREATE TABLE `event` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `description` varchar(250) NOT NULL,
+  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `description` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `date` date NOT NULL,
   `date_added` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin2;
@@ -124,7 +124,9 @@ CREATE TABLE `event` (
 --
 
 INSERT INTO `event` (`id`, `name`, `description`, `date`, `date_added`) VALUES
-(1, 'apel', 'siemano kolano', '2022-04-26', '2022-04-25');
+(1, 'apel', 'siemano kolano', '2022-04-26', '2022-04-25'),
+(2, 'testowy wydarzenie', 'asdasdasd', '2022-04-22', '2022-04-25'),
+(3, 'jakieś wydarzenie', 'jakiś opis', '2022-04-30', '2022-04-27');
 
 -- --------------------------------------------------------
 
@@ -194,15 +196,21 @@ INSERT INTO `exam_type` (`id_exam_type`, `name`, `description`) VALUES
 CREATE TABLE `grade` (
   `id_grade` int(11) NOT NULL,
   `name` varchar(1) NOT NULL,
-  `description` varchar(50) NOT NULL
+  `subject_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Zrzut danych tabeli `grade`
 --
 
-INSERT INTO `grade` (`id_grade`, `name`, `description`) VALUES
-(1, '4', 'jakiś opis');
+INSERT INTO `grade` (`id_grade`, `name`, `subject_id`) VALUES
+(1, '1', 1),
+(2, '3', 3),
+(3, '5', 1),
+(4, '6', 2),
+(5, '3', 6),
+(6, '3', 1),
+(7, '5', 1);
 
 -- --------------------------------------------------------
 
@@ -264,18 +272,95 @@ INSERT INTO `student` (`id`, `email`, `password`, `fname`, `lname`, `date_birth`
 --
 
 CREATE TABLE `subject` (
-  `id_subject` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `grade_id` int(11) NOT NULL,
-  `teacher_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id` int(11) NOT NULL,
+  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `description` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin2;
 
 --
 -- Zrzut danych tabeli `subject`
 --
 
-INSERT INTO `subject` (`id_subject`, `name`, `grade_id`, `teacher_id`) VALUES
-(1, 'przyrka', 2, 0);
+INSERT INTO `subject` (`id`, `name`, `description`) VALUES
+(1, 'Biologia', 'To jest Biologia'),
+(2, 'Chemia', 'To nie jest Biologia'),
+(3, 'Fizyka', '-'),
+(4, 'Geografia', '-'),
+(5, 'Historia', '-'),
+(6, 'Informatyka', ''),
+(7, 'Język angielski', ''),
+(8, 'Język polski', ''),
+(9, 'Matematyka', ''),
+(10, 'Wychowanie fizyczne', '');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `subject_grade`
+--
+
+CREATE TABLE `subject_grade` (
+  `id` int(11) NOT NULL,
+  `subject_id` int(11) NOT NULL,
+  `grade_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Zrzut danych tabeli `subject_grade`
+--
+
+INSERT INTO `subject_grade` (`id`, `subject_id`, `grade_id`) VALUES
+(1, 3, 2),
+(2, 2, 13),
+(3, 1, 14),
+(4, 1, 15),
+(5, 1, 1),
+(6, 3, 2),
+(7, 1, 3),
+(8, 2, 4),
+(9, 6, 5),
+(10, 1, 6),
+(11, 1, 7);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `subject_student`
+--
+
+CREATE TABLE `subject_student` (
+  `id` int(11) NOT NULL,
+  `subject_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin2;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `subject_teacher`
+--
+
+CREATE TABLE `subject_teacher` (
+  `id` int(11) NOT NULL,
+  `subject_id` int(11) NOT NULL,
+  `teacher_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin2;
+
+--
+-- Zrzut danych tabeli `subject_teacher`
+--
+
+INSERT INTO `subject_teacher` (`id`, `subject_id`, `teacher_id`) VALUES
+(1, 2, 1),
+(2, 1, 1),
+(3, 1, 1),
+(4, 1, 1),
+(5, 3, 1),
+(6, 1, 1),
+(7, 2, 1),
+(8, 6, 1),
+(9, 1, 1),
+(10, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -358,7 +443,25 @@ ALTER TABLE `student`
 -- Indeksy dla tabeli `subject`
 --
 ALTER TABLE `subject`
-  ADD PRIMARY KEY (`id_subject`);
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeksy dla tabeli `subject_grade`
+--
+ALTER TABLE `subject_grade`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeksy dla tabeli `subject_student`
+--
+ALTER TABLE `subject_student`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeksy dla tabeli `subject_teacher`
+--
+ALTER TABLE `subject_teacher`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeksy dla tabeli `teacher`
@@ -386,7 +489,7 @@ ALTER TABLE `classroom`
 -- AUTO_INCREMENT dla tabeli `event`
 --
 ALTER TABLE `event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT dla tabeli `exam`
@@ -404,7 +507,7 @@ ALTER TABLE `exam_type`
 -- AUTO_INCREMENT dla tabeli `grade`
 --
 ALTER TABLE `grade`
-  MODIFY `id_grade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_grade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT dla tabeli `parent`
@@ -422,7 +525,25 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT dla tabeli `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `id_subject` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT dla tabeli `subject_grade`
+--
+ALTER TABLE `subject_grade`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT dla tabeli `subject_student`
+--
+ALTER TABLE `subject_student`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT dla tabeli `subject_teacher`
+--
+ALTER TABLE `subject_teacher`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT dla tabeli `teacher`
