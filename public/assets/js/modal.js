@@ -124,6 +124,7 @@ class Modal{
         let dataObj = that.resultData;
         let str = '';
         for(let key in dataObj){
+            if(dataObj[key].value.includes('+') || dataObj[key].value.includes('-')) dataObj[key].value = encodeURIComponent(dataObj[key].value);
             str += dataObj[key].name+'='+dataObj[key].value+'&';
         }
         str = str.slice(0,-1);
@@ -132,6 +133,7 @@ class Modal{
             url: "./../modal_service.php",
             data: 'type='+that.updateRequest+'&'+str+'&id='+that.updateId,
             success:function(data) {
+                console.log(data);
                 let obj = JSON.parse(data);
                 if(obj.res == false)
                 {
@@ -142,7 +144,7 @@ class Modal{
                 }
             },
             error:function() {},
-            complete:function() {
+            complete:function(data) {
                 if(this.refresh == 1){
                     delete this
                     location.reload();

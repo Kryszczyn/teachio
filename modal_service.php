@@ -294,11 +294,11 @@
         }
         else{
           $res = false;
-          if(empty($ocena) || is_null($ocena))
+          if(empty($ocena) || !is_null($ocena))
           {
             $html = "Wprowadź ocenę";
           }
-          if(empty($przedmiot) || is_null($przedmiot))
+          if(empty($przedmiot) || !is_null($przedmiot))
           {
             $html = "Podaj przedmiot";
           }

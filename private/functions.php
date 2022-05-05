@@ -62,4 +62,63 @@ if(!function_exists('calc_avg')){
         return $avg;
     }
 }
+if(!function_exists('check_grade_type_color'))
+{
+    function check_grade_type_color($type)
+    {
+        $typeColorArr = ['bg-primary', 'bg-success', 'bg-warning', 'bg-danger', 'bg-info'];
+        switch($type)
+        {
+            case '1':
+                $typeColor = $typeColorArr[0];
+                break;
+            case '2':
+                $typeColor = $typeColorArr[1];
+                break;
+            case '3':
+                $typeColor = $typeColorArr[2];
+                break;
+            case '4':
+                $typeColor = $typeColorArr[3];
+                break;
+            case '5':
+                $typeColor = $typeColorArr[4];
+                break;
+            default:
+                $typeColor = $typeColorArr[0];
+                break;
+        }
+        return $typeColor;
+    }
+}
+if(!function_exists('check_grade_type_name'))
+{
+    function check_grade_type_name($type)
+    {
+        $typeNameArr = ['Klasówka', 'Kartkówka', 'Praca Domowa', 'Aktywność', 'Odpowiedź Ustna'];
+        switch($type)
+        {
+            case '1':
+                $typeName = $typeNameArr[0];
+                break;
+            case '2':
+                $typeName = $typeNameArr[1];
+                break;
+            case '3':
+                $typeName = $typeNameArr[2];
+                break;
+            case '4':
+                $typeName = $typeNameArr[3];
+                break;
+            case '5':
+                $typeName = $typeNameArr[4];
+                break;
+            default:
+                $typeName = $typeNameArr[0];
+                break;
+        }
+        return $typeName;
+    }
+}
+
 ?>
