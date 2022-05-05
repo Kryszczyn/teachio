@@ -1,11 +1,4 @@
 <?php
-if(!function_exists('r2')) 
-{
-    function r2($text) 
-    {
-        echo '<pre>' . print_r($text, true) . '</pre>';
-    }
-}
 if(!function_exists('login_user'))
 {
     function login_user($type_user, $value)
@@ -55,7 +48,7 @@ if(!function_exists('calc_avg')){
         $total_weight = 0;
         foreach($grades as $k => $v)
         {
-            $total += $v['grade'] * $v['weight'];
+            $total += $v['name'] * $v['weight'];
             $total_weight += $v['weight'];
         }
         $avg = $total / $total_weight;

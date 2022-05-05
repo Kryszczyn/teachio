@@ -283,7 +283,6 @@
           $subjectGrade->insert_subjectGrade($przedmiot, $grade_id);
           
           $subjectTeacher->insert_subjectTeacher($przedmiot, $_SESSION['user_id']);
-
           $res = true;
           $html = '';
           $array = array(
