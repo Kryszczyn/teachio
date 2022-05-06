@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 28 Kwi 2022, 13:22
+-- Czas generowania: 06 Maj 2022, 11:18
 -- Wersja serwera: 10.1.40-MariaDB
 -- Wersja PHP: 7.3.5
 
@@ -126,7 +126,26 @@ CREATE TABLE `event` (
 INSERT INTO `event` (`id`, `name`, `description`, `date`, `date_added`) VALUES
 (1, 'apel', 'siemano kolano', '2022-04-26', '2022-04-25'),
 (2, 'testowy wydarzenie', 'asdasdasd', '2022-04-22', '2022-04-25'),
-(3, 'jakieś wydarzenie', 'jakiś opis', '2022-04-30', '2022-04-27');
+(3, 'jakieś wydarzenie', 'jakiś opis', '2022-04-30', '2022-04-27'),
+(4, 'no elo', 'huehue', '2022-05-05', '2022-05-04'),
+(5, 'no elo', 'huehue', '2022-05-05', '2022-05-04'),
+(6, 'no elo', 'huehue', '2022-05-05', '2022-05-04'),
+(7, 'no elo', 'huehue', '2022-05-05', '2022-05-04'),
+(8, 'no elo', 'huehue', '2022-05-05', '2022-05-04'),
+(9, 'no elo', 'huehue', '2022-05-05', '2022-05-04'),
+(10, 'no elo', 'huehue', '2022-05-05', '2022-05-04'),
+(11, 'no elo', 'huehue', '2022-05-05', '2022-05-04'),
+(12, 'no elo', 'huehue', '2022-05-05', '2022-05-04'),
+(13, 'no elo', 'huehue', '2022-05-05', '2022-05-04'),
+(14, 'no elo', 'huehue', '2022-05-05', '2022-05-04'),
+(15, 'no elo', 'huehue', '2022-05-05', '2022-05-04'),
+(16, 'no elo', 'huehue', '2022-05-05', '2022-05-04'),
+(17, 'no elo', 'huehue', '2022-05-05', '2022-05-04'),
+(18, 'no elo', 'huehue', '2022-05-05', '2022-05-04'),
+(19, 'no elo', 'huehue', '2022-05-05', '2022-05-04'),
+(20, 'no elo', 'huehue', '2022-05-05', '2022-05-04'),
+(21, 'no elo', 'huehue', '2022-05-05', '2022-05-04'),
+(22, 'asd', 'asd', '2022-05-06', '2022-05-04');
 
 -- --------------------------------------------------------
 
@@ -195,7 +214,8 @@ INSERT INTO `exam_type` (`id_exam_type`, `name`, `description`) VALUES
 
 CREATE TABLE `grade` (
   `id_grade` int(11) NOT NULL,
-  `name` varchar(1) NOT NULL,
+  `name` varchar(2) NOT NULL,
+  `type` int(11) NOT NULL COMMENT '1 - klasówka, 2 - kartkówka, 3 - praca domowa, 4 - aktywność, 5 - odpowiedź ustna ',
   `subject_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -203,14 +223,23 @@ CREATE TABLE `grade` (
 -- Zrzut danych tabeli `grade`
 --
 
-INSERT INTO `grade` (`id_grade`, `name`, `subject_id`) VALUES
-(1, '1', 1),
-(2, '3', 3),
-(3, '5', 1),
-(4, '6', 2),
-(5, '3', 6),
-(6, '3', 1),
-(7, '5', 1);
+INSERT INTO `grade` (`id_grade`, `name`, `type`, `subject_id`) VALUES
+(1, '1', 1, 1),
+(2, '3', 2, 3),
+(3, '5', 3, 1),
+(4, '6', 1, 2),
+(5, '3', 2, 6),
+(6, '3', 2, 1),
+(7, '5', 3, 1),
+(8, '4', 1, 4),
+(9, '5', 2, 4),
+(10, '4', 3, 6),
+(11, '3', 4, 9),
+(35, '3', 1, 3),
+(36, '3', 2, 8),
+(37, '3', 2, 6),
+(38, '5-', 3, 10),
+(39, '2+', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -320,7 +349,39 @@ INSERT INTO `subject_grade` (`id`, `subject_id`, `grade_id`) VALUES
 (8, 2, 4),
 (9, 6, 5),
 (10, 1, 6),
-(11, 1, 7);
+(11, 1, 7),
+(12, 4, 8),
+(13, 4, 9),
+(14, 6, 10),
+(15, 9, 11),
+(16, 0, 12),
+(17, 0, 13),
+(18, 0, 14),
+(19, 0, 15),
+(20, 0, 16),
+(21, 0, 17),
+(22, 0, 18),
+(23, 0, 19),
+(24, 0, 20),
+(25, 0, 21),
+(26, 0, 22),
+(27, 0, 23),
+(28, 0, 24),
+(29, 0, 25),
+(30, 0, 26),
+(31, 0, 27),
+(32, 0, 28),
+(33, 0, 29),
+(34, 0, 30),
+(35, 0, 31),
+(36, 0, 32),
+(37, 0, 33),
+(38, 0, 34),
+(39, 3, 35),
+(40, 8, 36),
+(41, 6, 37),
+(42, 10, 38),
+(43, 1, 39);
 
 -- --------------------------------------------------------
 
@@ -360,7 +421,39 @@ INSERT INTO `subject_teacher` (`id`, `subject_id`, `teacher_id`) VALUES
 (7, 2, 1),
 (8, 6, 1),
 (9, 1, 1),
-(10, 1, 1);
+(10, 1, 1),
+(11, 4, 1),
+(12, 4, 1),
+(13, 6, 1),
+(14, 9, 1),
+(15, 0, 1),
+(16, 0, 1),
+(17, 0, 1),
+(18, 0, 1),
+(19, 0, 1),
+(20, 0, 1),
+(21, 0, 1),
+(22, 0, 1),
+(23, 0, 1),
+(24, 0, 1),
+(25, 0, 1),
+(26, 0, 1),
+(27, 0, 1),
+(28, 0, 1),
+(29, 0, 1),
+(30, 0, 1),
+(31, 0, 1),
+(32, 0, 1),
+(33, 0, 1),
+(34, 0, 1),
+(35, 0, 1),
+(36, 0, 1),
+(37, 0, 1),
+(38, 3, 1),
+(39, 8, 1),
+(40, 6, 1),
+(41, 10, 1),
+(42, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -489,7 +582,7 @@ ALTER TABLE `classroom`
 -- AUTO_INCREMENT dla tabeli `event`
 --
 ALTER TABLE `event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT dla tabeli `exam`
@@ -507,7 +600,7 @@ ALTER TABLE `exam_type`
 -- AUTO_INCREMENT dla tabeli `grade`
 --
 ALTER TABLE `grade`
-  MODIFY `id_grade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_grade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT dla tabeli `parent`
@@ -531,7 +624,7 @@ ALTER TABLE `subject`
 -- AUTO_INCREMENT dla tabeli `subject_grade`
 --
 ALTER TABLE `subject_grade`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT dla tabeli `subject_student`
@@ -543,7 +636,7 @@ ALTER TABLE `subject_student`
 -- AUTO_INCREMENT dla tabeli `subject_teacher`
 --
 ALTER TABLE `subject_teacher`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT dla tabeli `teacher`
