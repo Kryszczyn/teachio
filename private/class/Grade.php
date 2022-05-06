@@ -47,6 +47,22 @@
                 echo $e->getMessage();
             }
         }
+        public function update_type($id_grade, $type)
+        {
+            require_once './DatabaseConnect.php';
+            try
+            {
+                $database = new DatabaseConnect();
+                $db = $database->open_connection();
+                $sql = "UPDATE grade SET type='$type' WHERE id_grade='$id_grade' LIMIT 1";
+                $db->exec($sql);
+                $database->close_connection();
+            }
+            catch(PDOException $e)
+            {
+                echo $e->getMessage();
+            }
+        }
 
         public function insert_grade($name, $subject_id)
         {
@@ -54,10 +70,11 @@
             {
                 $database = new DatabaseConnect();
                 $db = $database->open_connection();
-                $sql = "INSERT INTO grade (name, subject_id) VALUES (:name, :subject_id)";
+                $sql = "INSERT INTO grade (name, type, subject_id) VALUES (:name, :type, :subject_id)";
                 $stmt = $db->prepare($sql);
                 $stmt->execute(array(
                     ':name' => $name,
+                    ':type' => $type,
                     ':subject_id' => $subject_id
                 ));
                 $this->last_id = $db->lastInsertId();

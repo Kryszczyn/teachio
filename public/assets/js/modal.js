@@ -133,6 +133,7 @@ class Modal{
             url: "./../modal_service.php",
             data: 'type='+that.updateRequest+'&'+str+'&id='+that.updateId,
             success:function(data) {
+                console.log(data);
                 let obj = JSON.parse(data);
                 if(obj.res == false)
                 {
@@ -143,7 +144,7 @@ class Modal{
                 }
             },
             error:function() {},
-            complete:function() {
+            complete:function(data) {
                 if(this.refresh == 1){
                     delete this
                     location.reload();

@@ -89,12 +89,12 @@
 
       ?>
         
-        <div class="d-flex flex-column"><!--kontener_oceny--> 
+        <div class="d-flex flex-column "><!--kontener_oceny--> 
             <div class="row">
-                <div class="col-md-3 border d-flex justify-content-center align-items-center m-0 p-0">
+                <div class="col-md-3 border d-flex justify-content-center align-items-center m-0 p-0 bg-white" style="border-radius: 5px 0 0 0;">
                     <p class="m-0 font-weight-bold">Przedmiot</p>
                 </div>
-                <div class="col-md-3 d-flex flex-column m-0 p-0">
+                <div class="col-md-3 d-flex flex-column m-0 p-0 bg-white">
                     <div class="col-md w-100 border d-flex align-items-center justify-content-center">
                         <p class="m-0 font-weight-bold">Okres 1</p>
                     </div>
@@ -106,7 +106,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-3 m-0 p-0 d-flex flex-column">
+                <div class="col-md-3 m-0 p-0 d-flex flex-column bg-white">
                     <div class="col-md w-100 border d-flex align-items-center justify-content-center">
                         <p class="m-0 font-weight-bold">Okres 2</p>
                     </div>
@@ -118,7 +118,7 @@
                     </div>
                 </div>
 
-                <div class="col-md m-0 p-0 d-flex flex-column">
+                <div class="col-md m-0 p-0 d-flex flex-column bg-white" style="border-radius: 0 5px 0 0;">
                     <div class="col-md w-100 border d-flex align-items-center justify-content-center">
                         <p class="m-0 font-weight-bold">Koniec roku</p>
                     </div>
@@ -131,30 +131,45 @@
             </div>
 
     <?php
-        $tempColorArr = ['bg-primary', 'bg-success', 'bg-warning', 'bg-danger'];
-        foreach($allSub as $k)
+        $tempColorArr = ['bg-primary', 'bg-success', 'bg-warning', 'bg-danger', 'bg-info'];
+        foreach($allSub as $k => $v)
         {
             $avgSubject = 0;
             $sum = 0;
+            $bRadiusLeft = '';
+            $bRadiusRight = '';
+            if(array_key_last($allSub) == $k)
+            {
+                $bRadiusLeft = 'style="border-radius: 0 0 0 5px;"';
+                $bRadiusRight = 'style="border-radius: 0 0 5px 0;"';
+            }
+
             echo '<div class="row">
-            <div class="col-md-3 border m-0 p-0 d-flex align-items-center justify-content-center">';
-                echo '<p class="m-0 font-weight-bold" data-toggle="tooltip" data-placement="top" title="'.$k['description'].'">' . $k['name'] . '</p>';
+            <div class="col-md-3 border m-0 p-0 d-flex align-items-center justify-content-center bg-white" '.$bRadiusLeft.'>';
+                echo '<p class="m-0 font-weight-bold" data-toggle="tooltip" data-placement="top" title="'.$v['description'].'">' . $v['name'] . '</p>';
             echo '</div>
-            <div class="col-md-3 d-flex m-0 p-0">
+            <div class="col-md-3 d-flex m-0 p-0 bg-white">
                 <div class="col-md-6 d-flex border align-align-items-center flex-wrap">';
-                    foreach($allGrade as $k2)
+                    foreach($allGrade as $k2 => $v2)
                     {
-                        if($k['id'] == $k2['subject_id'])
+                        if($v['id'] == $v2['subject_id'])
                         {
-                            echo '<div class="m-2 border note_item d-flex align-items-center justify-content-center rounded '. $tempColorArr[rand(0, 3)] .'"><p class="m-0 text-white">'.$k2['name'].'</p></div>';
-                            $avgSubject += (int)$k2['name'];
+                            echo '<div class="m-2 border note_item d-flex align-items-center justify-content-center rounded '. check_grade_type_color($v2['type']) .'"><p class="m-0 text-white" data-toggle="tooltip" data-placement="top" title="'.check_grade_type_name($v2['type']).'">'.$v2['name'].'</p></div>';
+                            $avgSubject += (int)$v2['name'];
                             $sum++;
                         }
                     }
                 echo '</div>
-                <div class="col-md border d-flex align-items-center justify-content-center">
-                    <div><p class="m-0">' . (float)($avgSubject/$sum) . '</p></div>
-                </div>
+                <div class="col-md border d-flex align-items-center justify-content-center">';
+                    if(!is_nan((float)floor(($avgSubject/$sum) * 100) / 100))
+                    {
+                        echo '<div><p class="m-0">' . (float)floor(($avgSubject/$sum) * 100) / 100 . '</p></div>';                        
+                    }
+                    else
+                    {
+                        echo '<div><p class="m-0">-</p></div>';
+                    }
+                echo '</div>
                 <div class="col-md border d-flex align-items-center justify-content-center">
                     <div class="border note_item d-flex align-items-center justify-content-center rounded bg-info"><p class="m-0 text-white">4+</p></div>
                 </div>
@@ -162,7 +177,7 @@
                     <div class="border note_item d-flex align-items-center justify-content-center rounded bg-info"><p class="m-0 text-white">5</p></div>
                 </div>
             </div>
-            <div class="col-md-3 d-flex m-0 p-0">
+            <div class="col-md-3 d-flex m-0 p-0 bg-white">
                 <div class="col-md-6 d-flex border flex-wrap">
                     <div class="m-2 border note_item d-flex align-items-center justify-content-center rounded '. $tempColorArr[rand(0, 3)] .'"><p class="m-0 text-white">5</p></div>
                     <div class="m-2 border note_item d-flex align-items-center justify-content-center rounded '. $tempColorArr[rand(0, 3)] .'"><p class="m-0 text-white">4+</p></div>
@@ -178,19 +193,18 @@
                     <div class="border note_item d-flex align-items-center justify-content-center rounded bg-info"><p class="m-0 text-white">5</p></div>
                 </div>
             </div>
-            <div class="col-md d-flex m-0 p-0">
+            <div class="col-md d-flex m-0 p-0 bg-white">
                 <div class="col-md border d-flex align-items-center justify-content-center">
                     <div><p class="m-0">5.17</p></div>
                 </div>
                 <div class="col-md border d-flex align-items-center justify-content-center">
                     <div class="border note_item d-flex align-items-center justify-content-center rounded bg-info"><p class="m-0 text-white">4+</p></div>
                 </div>
-                <div class="col-md border d-flex align-items-center justify-content-center">
+                <div class="col-md border d-flex align-items-center justify-content-center" '.$bRadiusRight.'>
                     <div class="border note_item d-flex align-items-center justify-content-center rounded bg-info"><p class="m-0 text-white">5</p></div>
                 </div>
             </div>
             </div>';
-            
         }
     ?>
     </div>
@@ -206,6 +220,7 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <script src="./assets/js/soft-ui-dashboard.js"></script>
   <script src="./assets/js/moment.min.js"></script>
+  <script src="./assets/js/notify.min.js"></script>
   <script type="module" src="./assets/js/main.js"></script>
   <script>
     $(function () {
