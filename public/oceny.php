@@ -78,60 +78,59 @@
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <?php include_once './navbar.php'; ?>
 
-    <div class="container-fluid py-4">
+    <div class="container-fluid py-4 ">
     <?php
       if($_SESSION['type'] == 'admin' || $_SESSION['type'] == 'teacher')
       {
-        echo '<div class="col-md-4">
+        echo '<div class="col-4">
                 <button type="button" class="modal-open btn bg-gradient-success btn-block mb-3" data-bs-toggle="modal" data-type="DODAJ_OCENE" data-refresh="0" data-values="" data-bs-target="#modal">Dodaj ocenę</button>
               </div>';
       }
 
       ?>
         
-        <div class="d-flex flex-column "><!--kontener_oceny--> 
+        <div class="d-flex flex-column blur shadow-blur"><!--kontener_oceny--> 
             <div class="row">
-                <div class="col-md-3 border d-flex justify-content-center align-items-center m-0 p-0 bg-white" style="border-radius: 5px 0 0 0;">
+                <div class="col-3 border d-flex justify-content-center align-items-center m-0 p-0 bg-white" style="border-radius: 5px 0 0 0;">
                     <p class="m-0 font-weight-bold">Przedmiot</p>
                 </div>
-                <div class="col-md-3 d-flex flex-column m-0 p-0 bg-white">
-                    <div class="col-md w-100 border d-flex align-items-center justify-content-center">
+                <div class="col-3 d-flex flex-column m-0 p-0 bg-white">
+                    <div class="col w-100 border d-flex align-items-center justify-content-center">
                         <p class="m-0 font-weight-bold">Okres 1</p>
                     </div>
-                    <div class="w-100 d-flex col-md">
-                        <div class="col-md-6 border d-flex align-items-center justify-content-center"><p class="m-0 font-weight-bold">Oceny bieżące</p></div>
-                        <div class="col-md-2 border d-flex align-items-center justify-content-center"><p class="m-0 font-weight-bold">Śr. I</p></div>
-                        <div class="col-md-2 border d-flex align-items-center justify-content-center"><p class="m-0 font-weight-bold">(I)</p></div>
-                        <div class="col-md-2 border d-flex align-items-center justify-content-center"><p class="m-0 font-weight-bold">I</p></div>
+                    <div class="w-100 d-flex col">
+                        <div class="col-6 border d-flex align-items-center justify-content-center"><p class="m-0 font-weight-bold">Oceny bieżące</p></div>
+                        <div class="col-2 border d-flex align-items-center justify-content-center"><p class="m-0 font-weight-bold">Śr. I</p></div>
+                        <div class="col-2 border d-flex align-items-center justify-content-center"><p class="m-0 font-weight-bold">(I)</p></div>
+                        <div class="col-2 border d-flex align-items-center justify-content-center"><p class="m-0 font-weight-bold">I</p></div>
                     </div>
                 </div>
 
-                <div class="col-md-3 m-0 p-0 d-flex flex-column bg-white">
-                    <div class="col-md w-100 border d-flex align-items-center justify-content-center">
+                <div class="col-3 m-0 p-0 d-flex flex-column bg-white">
+                    <div class="col w-100 border d-flex align-items-center justify-content-center">
                         <p class="m-0 font-weight-bold">Okres 2</p>
                     </div>
-                    <div class="col-md w-100 d-flex">
-                        <div class="col-md-6 border d-flex align-items-center justify-content-center"><p class="m-0 font-weight-bold">Oceny bieżące</p></div>
-                        <div class="col-md-2 border d-flex align-items-center justify-content-center"><p class="m-0 font-weight-bold">Śr. II</p></div>
-                        <div class="col-md-2 border d-flex align-items-center justify-content-center"><p class="m-0 font-weight-bold">(II)</p></div>
-                        <div class="col-md-2 border d-flex align-items-center justify-content-center"><p class="m-0 font-weight-bold">II</p></div>
+                    <div class="col w-100 d-flex">
+                        <div class="col-6 border d-flex align-items-center justify-content-center"><p class="m-0 font-weight-bold">Oceny bieżące</p></div>
+                        <div class="col-2 border d-flex align-items-center justify-content-center"><p class="m-0 font-weight-bold">Śr. II</p></div>
+                        <div class="col-2 border d-flex align-items-center justify-content-center"><p class="m-0 font-weight-bold">(II)</p></div>
+                        <div class="col-2 border d-flex align-items-center justify-content-center"><p class="m-0 font-weight-bold">II</p></div>
                     </div>
                 </div>
 
-                <div class="col-md m-0 p-0 d-flex flex-column bg-white" style="border-radius: 0 5px 0 0;">
-                    <div class="col-md w-100 border d-flex align-items-center justify-content-center">
+                <div class="col m-0 p-0 d-flex flex-column bg-white" style="border-radius: 0 5px 0 0;">
+                    <div class="col w-100 border d-flex align-items-center justify-content-center">
                         <p class="m-0 font-weight-bold">Koniec roku</p>
                     </div>
-                    <div class="col-md w-100 d-flex">
-                        <div class="col-md border d-flex align-items-center justify-content-center"><p class="m-0 font-weight-bold">Śr. R</p></div>
-                        <div class="col-md border d-flex align-items-center justify-content-center"><p class="m-0 font-weight-bold">(R)</p></div>
-                        <div class="col-md border d-flex align-items-center justify-content-center"><p class="m-0 font-weight-bold">R</p></div>
+                    <div class="col w-100 d-flex">
+                        <div class="col border d-flex align-items-center justify-content-center"><p class="m-0 font-weight-bold">Śr. R</p></div>
+                        <div class="col border d-flex align-items-center justify-content-center"><p class="m-0 font-weight-bold">(R)</p></div>
+                        <div class="col border d-flex align-items-center justify-content-center"><p class="m-0 font-weight-bold">R</p></div>
                     </div>
                 </div>
             </div>
 
     <?php
-        $tempColorArr = ['bg-primary', 'bg-success', 'bg-warning', 'bg-danger', 'bg-info'];
         foreach($allSub as $k => $v)
         {
             $avgSubject = 0;
@@ -145,63 +144,93 @@
             }
 
             echo '<div class="row">
-            <div class="col-md-3 border m-0 p-0 d-flex align-items-center justify-content-center bg-white" '.$bRadiusLeft.'>';
+            <div class="col-3 border m-0 p-0 py-2 d-flex align-items-center justify-content-center bg-white" '.$bRadiusLeft.'>';
                 echo '<p class="m-0 font-weight-bold" data-toggle="tooltip" data-placement="top" title="'.$v['description'].'">' . $v['name'] . '</p>';
             echo '</div>
-            <div class="col-md-3 d-flex m-0 p-0 bg-white">
-                <div class="col-md-6 d-flex border align-align-items-center flex-wrap">';
+            <div class="col-3 d-flex m-0 p-0 bg-white">
+                <div class="col-6 d-flex border align-align-items-center flex-wrap">';
                     foreach($allGrade as $k2 => $v2)
                     {
-                        if($v['id'] == $v2['subject_id'])
+                        if($v['id'] == $v2['subject_id'] && $v2['semester'] == '1')
                         {
+                            $sum = 0;
                             echo '<div class="m-2 border note_item d-flex align-items-center justify-content-center rounded '. check_grade_type_color($v2['type']) .'"><p class="m-0 text-white" data-toggle="tooltip" data-placement="top" title="'.check_grade_type_name($v2['type']).'">'.$v2['name'].'</p></div>';
                             $avgSubject += (int)$v2['name'];
                             $sum++;
+                            $gradeObj->gradeValue[] = $v2['name'];
+                            $gradeObj->gradeType[] = $v2['type'];
                         }
                     }
                 echo '</div>
-                <div class="col-md border d-flex align-items-center justify-content-center">';
-                    if(!is_nan((float)floor(($avgSubject/$sum) * 100) / 100))
+                <div class="col border d-flex align-items-center justify-content-center">';
+                    if($sum > 0)
                     {
-                        echo '<div><p class="m-0">' . (float)floor(($avgSubject/$sum) * 100) / 100 . '</p></div>';                        
+                        echo '<div><p class="m-0">' . calc_weighted_average($gradeObj). '</p></div>';
                     }
                     else
                     {
                         echo '<div><p class="m-0">-</p></div>';
                     }
                 echo '</div>
-                <div class="col-md border d-flex align-items-center justify-content-center">
-                    <div class="border note_item d-flex align-items-center justify-content-center rounded bg-info"><p class="m-0 text-white">4+</p></div>
+                <div class="col border d-flex align-items-center justify-content-center">
+                    <div class="border note_item d-flex align-items-center justify-content-center rounded bg-info"><p class="m-0 text-white">?</p></div>
                 </div>
-                <div class="col-md border d-flex align-items-center justify-content-center">
-                    <div class="border note_item d-flex align-items-center justify-content-center rounded bg-info"><p class="m-0 text-white">5</p></div>
-                </div>
-            </div>
-            <div class="col-md-3 d-flex m-0 p-0 bg-white">
-                <div class="col-md-6 d-flex border flex-wrap">
-                    <div class="m-2 border note_item d-flex align-items-center justify-content-center rounded '. $tempColorArr[rand(0, 3)] .'"><p class="m-0 text-white">5</p></div>
-                    <div class="m-2 border note_item d-flex align-items-center justify-content-center rounded '. $tempColorArr[rand(0, 3)] .'"><p class="m-0 text-white">4+</p></div>
-                    <div class="m-2 border note_item d-flex align-items-center justify-content-center rounded '. $tempColorArr[rand(0, 3)] .'"><p class="m-0 text-white">6</p></div>
-                </div>
-                <div class="col-md border d-flex align-items-center justify-content-center">
-                    <div><p class="m-0">5.17</p></div>
-                </div>
-                <div class="col-md border d-flex align-items-center justify-content-center">
-                    <div class="border note_item d-flex align-items-center justify-content-center rounded bg-info"><p class="m-0 text-white">4+</p></div>
-                </div>
-                <div class="col-md border d-flex align-items-center justify-content-center">
-                    <div class="border note_item d-flex align-items-center justify-content-center rounded bg-info"><p class="m-0 text-white">5</p></div>
+                <div class="col border d-flex align-items-center justify-content-center">
+                    <div class="border note_item d-flex align-items-center justify-content-center rounded bg-info"><p class="m-0 text-white">?</p></div>
                 </div>
             </div>
-            <div class="col-md d-flex m-0 p-0 bg-white">
-                <div class="col-md border d-flex align-items-center justify-content-center">
-                    <div><p class="m-0">5.17</p></div>
+            <div class="col-3 d-flex m-0 p-0 bg-white">
+                <div class="col-6 d-flex border flex-wrap">';
+                unset($gradeObj);
+                    foreach($allGrade as $k2 => $v2)
+                    {
+                        if($v['id'] == $v2['subject_id'] && $v2['semester'] == '2')
+                        {
+                            $sum = 0;
+                            echo '<div class="m-2 border note_item d-flex align-items-center justify-content-center rounded '. check_grade_type_color($v2['type']) .'"><p class="m-0 text-white" data-toggle="tooltip" data-placement="top" title="'.check_grade_type_name($v2['type']).'">'.$v2['name'].'</p></div>';
+                            $avgSubject += (int)$v2['name'];
+                            $sum++;
+                            $gradeObj->gradeValue[] = $v2['name'];
+                            $gradeObj->gradeType[] = $v2['type'];
+                        }
+                    }
+                echo '</div>
+                <div class="col border d-flex align-items-center justify-content-center">';
+
+                if($sum > 0)
+                    {
+                        echo '<div><p class="m-0">' . calc_weighted_average($gradeObj). '</p></div>';
+                    }
+                    else
+                    {
+                        echo '<div><p class="m-0">-</p></div>';
+                    }
+                echo '</div>
+                <div class="col border d-flex align-items-center justify-content-center">
+                    <div class="border note_item d-flex align-items-center justify-content-center rounded bg-info"><p class="m-0 text-white">?</p></div>
                 </div>
-                <div class="col-md border d-flex align-items-center justify-content-center">
-                    <div class="border note_item d-flex align-items-center justify-content-center rounded bg-info"><p class="m-0 text-white">4+</p></div>
+                <div class="col border d-flex align-items-center justify-content-center">
+                    <div class="border note_item d-flex align-items-center justify-content-center rounded bg-info"><p class="m-0 text-white">?</p></div>
                 </div>
-                <div class="col-md border d-flex align-items-center justify-content-center" '.$bRadiusRight.'>
-                    <div class="border note_item d-flex align-items-center justify-content-center rounded bg-info"><p class="m-0 text-white">5</p></div>
+            </div>
+            <div class="col d-flex m-0 p-0 bg-white">
+                <div class="col border d-flex align-items-center justify-content-center">';
+                unset($gradeObj);
+                foreach($allGrade as $k2 => $v2)
+                    {
+                        if($v['id'] == $v2['subject_id'])
+                        {
+                            $gradeObj->gradeValue[] = $v2['name'];
+                            $gradeObj->gradeType[] = $v2['type'];
+                        }
+                    }
+                    echo '<div><p class="m-0"> ' . calc_weighted_average($gradeObj) . ' </p></div>
+                </div>
+                <div class="col border d-flex align-items-center justify-content-center">
+                    <div class="border note_item d-flex align-items-center justify-content-center rounded bg-info"><p class="m-0 text-white">?</p></div>
+                </div>
+                <div class="col border d-flex align-items-center justify-content-center" '.$bRadiusRight.'>
+                    <div class="border note_item d-flex align-items-center justify-content-center rounded bg-info"><p class="m-0 text-white">?</p></div>
                 </div>
             </div>
             </div>';

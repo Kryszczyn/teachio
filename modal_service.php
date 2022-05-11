@@ -210,6 +210,13 @@
       $allSubjects = $subject->load_all_subject();
 
       $notesArr = ['1', '2-', '2', '2+', '3-', '3', '3+', '4-', '4', '4+', '5-', '5', '5+', '6'];
+      $gradeTypeArr = array(
+        '1' => 'Aktywność', 
+        '2' => 'Kartkówka', 
+        '3' => 'Praca Domowa', 
+        '4' => 'Odpowiedź ustna',
+        '5' => 'Klasówka'
+      );
 
       ob_start();
         echo '<div class="modal-header">
@@ -224,22 +231,39 @@
                   <label for="subject-note" class="col-form-label">Ocena:</label>';
                   echo '<select class="form-control" data-text="ocena_ocena" id="subject-note">';
                     echo '<option selected disabled>Wybierz ocenę</option>';
-                    for($i=0; $i<count($notesArr); $i++)
-                    {
-                      echo '<option value="'.$notesArr[$i].'">'.$notesArr[$i].'</option>';
-                    }
-                    echo '</select>';
-                    echo '</div>
-                    <div class="form-group">
-                    <label for="subject-name" class="col-form-label">Przedmiot:</label>';
-                    echo '<select class="form-control" data-text="przedmiot_ocena" id="subject-name">';
-                    echo '<option selected disabled>Wybierz przedmiot</option>';
-                    foreach($allSubjects as $k)
-                    {
-                      echo '<option value="'.$k['id'].'">'.$k['name'].'</option>';
-                    }
+                      for($i=0; $i<count($notesArr); $i++)
+                      {
+                        echo '<option value="'.$notesArr[$i].'">'.$notesArr[$i].'</option>';
+                      }
                   echo '</select>';
-
+                echo '</div>
+                <div class="form-group">
+                  <label for="subject-name" class="col-form-label">Przedmiot:</label>';
+                    echo '<select class="form-control" data-text="przedmiot_ocena" id="subject-name">';
+                      echo '<option selected disabled>Wybierz przedmiot</option>';
+                        foreach($allSubjects as $k)
+                        {
+                          echo '<option value="'.$k['id'].'">'.$k['name'].'</option>';
+                        }
+                    echo '</select>
+                </div>
+                <div class="form-group">
+                  <label for="grade-type" class="col-form-label">Waga:</label>';
+                    echo '<select class="form-control" data-text="typ_ocena" id="grade-type">';
+                      echo '<option selected disabled>Wybierz wagę</option>';
+                        foreach($gradeTypeArr as $k => $v)
+                        {
+                          echo '<option value="'.$k.'">'.$v.'</option>';
+                        }
+                    echo '</select>';
+                echo '</div>
+                <div class="form-group">
+                  <label for="grade-semester" class="col-form-label">Semestr:</label>';
+                    echo '<select class="form-control" data-text="semestr_ocena" id="grade-semester">';
+                      echo '<option selected disabled>Wybierz semestr</option>';
+                      echo '<option value="1">1</option>';
+                      echo '<option value="2">2</option>';
+                    echo '</select>';
                 echo '</div>
               </form>
             </div>
@@ -248,7 +272,7 @@
               <button type="button" class="btn bg-gradient-primary modal-accept">Wyślij</button>
             </div>';
 
-            $html = ob_get_contents();
+        $html = ob_get_contents();
         ob_end_clean();
 
         $array = array(
@@ -269,15 +293,17 @@
 
         $ocena = $_POST['ocena_ocena'];
         $przedmiot = $_POST['przedmiot_ocena'];
+        $typ = $_POST['typ_ocena'];
+        $semester = $_POST['semestr_ocena'];
 
 
-        if(!empty($ocena) && !empty($przedmiot) && !is_null($ocena) && !is_null($przedmiot))
+        if(!empty($_POST) && !is_null($_POST))
         {
           $subjectTeacher = new SubjectTeacher();
           $subjectGrade = new SubjectGrade();
           $grade = new Grade();
           
-          $grade->insert_grade($ocena, $przedmiot);
+          $grade->insert_grade($ocena, $przedmiot, $typ, $semester);
           $grade_id = !empty($grade->last_id) ? $grade->last_id : null;
           
           $subjectGrade->insert_subjectGrade($przedmiot, $grade_id);
@@ -301,6 +327,14 @@
           {
             $html = "Podaj przedmiot";
           }
+          if(empty($typ) || !is_null($typ))
+          {
+            $html = "Podaj wagę";
+          }
+          if(empty($semester) || !is_null($semester))
+          {
+            $html = "Podaj semestr";
+          }
          
           $array = array(
             'html' => $html,
@@ -309,6 +343,104 @@
           echo json_encode($array);
           die();
         }
-        
+    }
+    if($modal == "DODAJ_UWAGE")
+    {
+      
+      $user_id = $_SESSION['user_id'];
+      $user_type = $_SESSION['type'];
+
+      include './private/class/DatabaseConnect.php';
+
+      ob_start();
+        echo '<div class="modal-header">
+            <h5 class="modal-title">Dodaj Uwage</h5>
+              <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="comment-name" class="col-form-label">Nazwa:</label>
+                  <input type="text" class="form-control" id="comment-name" data-text="uwaga_nazwa" value="">
+                </div>
+                <div class="form-group">
+                  <label for="comment-value" class="col-form-label">Punkty:</label>
+                  <input type="text" class="form-control" id="comment-value" data-text="uwaga_punkty" value="">
+                </div>
+                <div class="form-group">
+                  <label for="comment-description" class="col-form-label">Komentarz:</label>
+                  <textarea class="form-control" id="comment-description" data-text="uwaga_komentarz" value=""></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn bg-gradient-secondary modal-decline" data-bs-dismiss="modal">Anuluj</button>
+              <button type="button" class="btn bg-gradient-primary modal-accept">Wyślij</button>
+            </div>';
+
+        $html = ob_get_contents();
+        ob_end_clean();
+
+        $array = array(
+            'html' => $html,
+            'update' => 'DODAJ_UWAGE_UP'
+        );
+        //decode json data
+        echo json_encode($array);
+    }
+    if($modal == "DODAJ_UWAGE_UP")
+    {
+        include './private/class/DatabaseConnect.php';
+        include './private/class/Comments.php';
+
+        $uwaga_nazwa = $_POST['uwaga_nazwa'];
+        $uwaga_punkty = $_POST['uwaga_punkty'];
+        $uwaga_komentarz = $_POST['uwaga_komentarz'];
+        $uwaga_data = date('Y-m-d');
+
+        if(!empty($_POST) && !is_null($_POST))
+        {
+          $res = true;
+          if(empty($uwaga_nazwa))
+          {
+            $html = "Podaj nazwę";
+            $res = false;
+          }
+          if(empty($uwaga_punkty))
+          {
+            $html = "Podaj punkty";
+            $res = false;
+          }
+          if(empty($uwaga_komentarz))
+          {
+            $html = "Podaj komentarz";
+            $res = false;
+          }
+
+          if($res)
+          {
+            $comments = new Comments();
+          
+            //! Zmienić na automatyczne wyszukiwanie nauczyciela i  studenta
+            $comments->insert_comments($uwaga_nazwa, $uwaga_data, $uwaga_punkty, $uwaga_komentarz, 1, 1, 1);
+            
+            $html = '';
+            $array = array(
+              'html' => $html,
+              'res' => $res
+            );
+            echo json_encode($res);
+          }
+          else{
+            $array = array(
+              'html' => $html,
+              'res' => $res
+            );
+            echo json_encode($array);
+            die();
+          }
+        }
     }
 ?>

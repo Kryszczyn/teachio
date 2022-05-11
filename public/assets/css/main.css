@@ -1,6 +1,9 @@
 @import './addons.css'; 
 .plan_background{
     background-color: #21d4fd;
+}
+.plan_background_2{
+    background-color: #45B5CF;
 
 }
 .plan_col:nth-child(n){
@@ -9,7 +12,9 @@
 .plan_col:nth-child(2n){
     background-color: #F2F2F2;
 }
-
+.icon_color{
+    color: #21d4fd;
+}
 .note_item{
     width: 28px;
     max-width: 28px;
