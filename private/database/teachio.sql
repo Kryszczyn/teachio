@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 06 Maj 2022, 11:18
--- Wersja serwera: 10.1.40-MariaDB
--- Wersja PHP: 7.3.5
+-- Czas generowania: 11 Maj 2022, 18:20
+-- Wersja serwera: 10.4.13-MariaDB
+-- Wersja PHP: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -104,6 +103,32 @@ CREATE TABLE `classroom_student` (
 
 INSERT INTO `classroom_student` (`classroom_id`, `student_id`) VALUES
 (1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `date` date NOT NULL,
+  `value` varchar(10) NOT NULL,
+  `description` varchar(250) NOT NULL,
+  `teacher_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Zrzut danych tabeli `comments`
+--
+
+INSERT INTO `comments` (`id`, `name`, `date`, `value`, `description`, `teacher_id`, `student_id`, `status`) VALUES
+(2, 'Nagana', '2022-05-11', '-10', 'Uczeń po przegranym zakładzie z kolegami zjadł krede po czym oznajmił krzycząc “JAK JEBANY GOŁOMB BĘDĘ SRAŁ NA WAS Z GÓRY”', 1, 1, 1),
+(3, 'Testowa uwaga', '2022-05-11', '-20', 'Jakiś testowy opis', 1, 1, 1),
+(7, 'test', '2022-05-11', '-20', 'asd', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -215,7 +240,8 @@ INSERT INTO `exam_type` (`id_exam_type`, `name`, `description`) VALUES
 CREATE TABLE `grade` (
   `id_grade` int(11) NOT NULL,
   `name` varchar(2) NOT NULL,
-  `type` int(11) NOT NULL COMMENT '1 - klasówka, 2 - kartkówka, 3 - praca domowa, 4 - aktywność, 5 - odpowiedź ustna ',
+  `type` int(11) NOT NULL COMMENT '1 - Aktywność, 2 - Kartkówka, 3 - Praca Domowa, 4 - Odpowiedź ustna, 5 - Klasówka',
+  `semester` int(1) NOT NULL,
   `subject_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -223,23 +249,9 @@ CREATE TABLE `grade` (
 -- Zrzut danych tabeli `grade`
 --
 
-INSERT INTO `grade` (`id_grade`, `name`, `type`, `subject_id`) VALUES
-(1, '1', 1, 1),
-(2, '3', 2, 3),
-(3, '5', 3, 1),
-(4, '6', 1, 2),
-(5, '3', 2, 6),
-(6, '3', 2, 1),
-(7, '5', 3, 1),
-(8, '4', 1, 4),
-(9, '5', 2, 4),
-(10, '4', 3, 6),
-(11, '3', 4, 9),
-(35, '3', 1, 3),
-(36, '3', 2, 8),
-(37, '3', 2, 6),
-(38, '5-', 3, 10),
-(39, '2+', 3, 1);
+INSERT INTO `grade` (`id_grade`, `name`, `type`, `semester`, `subject_id`) VALUES
+(1, '4-', 3, 2, 5),
+(2, '2', 4, 1, 5);
 
 -- --------------------------------------------------------
 
@@ -381,7 +393,12 @@ INSERT INTO `subject_grade` (`id`, `subject_id`, `grade_id`) VALUES
 (40, 8, 36),
 (41, 6, 37),
 (42, 10, 38),
-(43, 1, 39);
+(43, 1, 39),
+(44, 10, 40),
+(45, 4, 41),
+(46, 3, 42),
+(47, 5, 1),
+(48, 5, 2);
 
 -- --------------------------------------------------------
 
@@ -453,7 +470,12 @@ INSERT INTO `subject_teacher` (`id`, `subject_id`, `teacher_id`) VALUES
 (39, 8, 1),
 (40, 6, 1),
 (41, 10, 1),
-(42, 1, 1);
+(42, 1, 1),
+(43, 10, 1),
+(44, 4, 1),
+(45, 3, 1),
+(46, 5, 1),
+(47, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -495,6 +517,12 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `classroom`
   ADD PRIMARY KEY (`id_classroom`);
+
+--
+-- Indeksy dla tabeli `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeksy dla tabeli `event`
@@ -579,6 +607,12 @@ ALTER TABLE `classroom`
   MODIFY `id_classroom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT dla tabeli `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT dla tabeli `event`
 --
 ALTER TABLE `event`
@@ -600,7 +634,7 @@ ALTER TABLE `exam_type`
 -- AUTO_INCREMENT dla tabeli `grade`
 --
 ALTER TABLE `grade`
-  MODIFY `id_grade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_grade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT dla tabeli `parent`
@@ -624,7 +658,7 @@ ALTER TABLE `subject`
 -- AUTO_INCREMENT dla tabeli `subject_grade`
 --
 ALTER TABLE `subject_grade`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT dla tabeli `subject_student`
@@ -636,7 +670,7 @@ ALTER TABLE `subject_student`
 -- AUTO_INCREMENT dla tabeli `subject_teacher`
 --
 ALTER TABLE `subject_teacher`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT dla tabeli `teacher`
