@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 11 Maj 2022, 18:20
+-- Czas generowania: 23 Maj 2022, 10:50
 -- Wersja serwera: 10.4.13-MariaDB
 -- Wersja PHP: 7.4.7
 
@@ -53,17 +53,26 @@ INSERT INTO `admin` (`id`, `email`, `password`, `fname`, `lname`, `date_birth`, 
 --
 
 CREATE TABLE `attendance` (
-  `date` date NOT NULL,
+  `id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
-  `status` tinyint(1) NOT NULL
+  `teacher_id` int(11) NOT NULL,
+  `lesson_number` int(11) NOT NULL,
+  `date_added` date NOT NULL,
+  `date_attendance` date NOT NULL,
+  `type` int(11) NOT NULL COMMENT '1 - NB, 2 - U, 3 - SP, 4 - ZW',
+  `semester` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Zrzut danych tabeli `attendance`
 --
 
-INSERT INTO `attendance` (`date`, `student_id`, `status`) VALUES
-('2022-03-30', 1, 1);
+INSERT INTO `attendance` (`id`, `student_id`, `teacher_id`, `lesson_number`, `date_added`, `date_attendance`, `type`, `semester`) VALUES
+(1, 1, 1, 1, '2022-05-18', '2022-05-18', 1, 1),
+(2, 1, 1, 1, '2022-05-16', '2022-05-16', 1, 1),
+(3, 1, 1, 2, '2022-05-16', '2022-05-16', 2, 1),
+(4, 1, 1, 1, '2022-05-20', '2022-05-20', 1, 1),
+(5, 1, 1, 3, '2022-05-16', '2022-05-16', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -513,6 +522,12 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeksy dla tabeli `attendance`
+--
+ALTER TABLE `attendance`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeksy dla tabeli `classroom`
 --
 ALTER TABLE `classroom`
@@ -599,6 +614,12 @@ ALTER TABLE `teacher`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT dla tabeli `attendance`
+--
+ALTER TABLE `attendance`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT dla tabeli `classroom`
