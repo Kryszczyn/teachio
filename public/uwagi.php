@@ -109,9 +109,11 @@
               <div class="col-2 py-2 border rounded d-flex flex-column align-items-center justify-content-center plan_background">
                 <p class="fw-bold m-0 text-white"><?php echo $v['date'] ?></p>
               </div> 
-              <div class="col-9 py-2 border rounded d-flex align-items-center  plan_col">
+              <div class="col-9 py-2 border rounded d-flex align-items-center plan_col">
                 <p class="fw-bold m-0 me-1 align-items-start "><?php echo $v['name'] ?></p>
-                <a href="uwagi_opis.php?idc=<?php echo $v['id'] ?>" target="_blank" data-toggle="tooltip" data-placement="top" title="Zobacz uwagę"><i class="fa-solid fa-angles-right icon_color"></i></a>
+                <a class="d-flex align-items-center" href="uwagi_opis.php?idc=<?php echo $v['id'] ?>" target="_blank" data-toggle="tooltip" data-placement="top" title="Zobacz uwagę">
+                  <i class="fa-solid fa-angles-right icon_color"></i>
+                </a>
                 
               </div>
               <div class="col-1 py-2 border rounded d-flex align-items-center justify-content-center plan_col">

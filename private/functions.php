@@ -121,4 +121,32 @@ if(!function_exists('check_grade_type_name'))
     }
 }
 
+if(!function_exists('generate_attendance_obj'))
+{
+    function generate_attendance_obj($attendance)
+    {
+        for($i = 1; $i <= 9; $i++)
+        {
+            $attendaceArr[$i] = null;
+        }
+        $firstAttendance = $attendance[0]['date_attendance'];
+        foreach($attendance as $k => $v)
+        {
+            if($v['date_attendance'] != $firstAttendance)
+            {
+                $firstAttendance = $v['date_attendance'];
+                $attendaceArr = array_fill_keys(array_keys($attendaceArr), null);
+            }
+            foreach($attendaceArr as $k2 => $v2)
+            {
+                if($k2 == $v['lesson_number'])
+                {
+                    $attendaceArr[$k2] = $v['type'];
+                }
+            }
+            $attendaceObj[$firstAttendance]->values = $attendaceArr;
+        }
+        return $attendaceObj;
+    }
+}
 ?>

@@ -443,4 +443,71 @@
           }
         }
     }
+    if($modal == "DODAJ_FREKWENCJE")
+    {
+      
+      $user_id = $_SESSION['user_id'];
+      $user_type = $_SESSION['type'];
+
+      include './private/class/DatabaseConnect.php';
+      $allTypes = array(
+        '1' => 'Nieobecność',
+        '2' => 'Usprawiedliwienie',
+        '3' => 'Spóźnienie',
+        '4' => 'Zwolnienie'
+      );
+      for($i = 1; $i <= 9; $i++)
+      {
+          $lessonsArr[$i] = $i;
+      }
+      ob_start();
+        echo '<div class="modal-header">
+            <h5 class="modal-title">Dodaj Frekwencje</h5>
+              <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="atendence-type" class="col-form-label">Typ:</label>';
+                  echo '<select class="form-control" data-text="przedmiot_ocena" id="atendence-type">';
+                    echo '<option selected disabled>Wybierz typ</option>';
+                    foreach($allTypes as $k => $v)
+                    {
+                      echo '<option value="'.$k.'">'.$v.'</option>';
+                    }
+                  echo '</select>
+                </div>
+                <div class="form-group">
+                  <label for="atendence-lesson" class="col-form-label">Numer lekcji:</label>';
+                  echo '<select class="form-control" data-text="przedmiot_ocena" id="atendence-lesson">';
+                    echo '<option selected disabled>Wybierz przedmiot</option>';
+                    for($i = 1; $i <= 9; $i++)
+                    {
+                      echo '<option value="'.$i.'">'.$i.'</option>';
+                    }
+                  echo '</select>
+                </div>
+                <div class="form-group">
+                  <label for="event-date" class="col-form-label">Data:</label>
+                  <input type="date" class="form-control" id="event-date" data-text="wydarzenie_data" value="'.date('Y-m-d').'">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn bg-gradient-secondary modal-decline" data-bs-dismiss="modal">Anuluj</button>
+              <button type="button" class="btn bg-gradient-primary modal-accept">Wyślij</button>
+            </div>';
+
+        $html = ob_get_contents();
+        ob_end_clean();
+
+        $array = array(
+            'html' => $html,
+            'update' => 'DODAJ_FREKWENCJE_UP'
+        );
+        //decode json data
+        echo json_encode($array);
+    }
 ?>
